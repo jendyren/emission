@@ -7,10 +7,16 @@ h1, h2, h3, h4, h5, h6 {
  font-weight: 300;
 }
 
+/* go to global.css for navbar */
+/* .navbar{
+  box-shadow: 2px 4px 10px 2px rgb(211, 211, 211);
+  
+}
+
 .navbar-brand {
   font-family: 'Megrim', cursive;
   font-size:30px;
-}
+} */
 
 /* will delete if i mess up lol*/
 /* GLOBAL STYLES
@@ -25,7 +31,7 @@ body {
 
 /* NAVBAR
 ---------------------------------------*/
-.navbar {
+/* .navbar {
 	padding:20px !important;
 	background: white;
 }
@@ -43,7 +49,7 @@ body {
 .active {
 	color: #6EB097 !important;
 	border-bottom: 2px solid #6EB097;
-}
+} */
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -51,6 +57,7 @@ body {
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
+	padding-top: 0px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {

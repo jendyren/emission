@@ -2,64 +2,77 @@
 <html>
 	<head>
 		{% include "partials/header.html" %}
-		<link rel="stylesheet" href="/static/styles/landing.css">
+		<!-- The random numbers will also prevent caching -->
 		<link rel="stylesheet" href="/static/styles/index.css">
 		{% include "partials/navbar.html" %}
+		<link rel="stylesheet" href="/static/styles/landing.css">
 	</head>
 	<body>
-		<div class="row">
+		<div class="row" style="margin-bottom:20%;">
 			<div class="col-6 landing-text-wrapper">
-				<h1>want to lower your carbon footprint?</h1>
-				<a href="/main" class="btn btn-primary"> click here to get started</a>
+				<h1>Want to lower your carbon footprint?</h1>
+				<a href="/dashboard" class="btn btn-primary"> Click here to get started.</a>
+				<a href="/dashboard" class="btn btn-primary"> Learn more.</a>
 			</div>
 			<div class="col-6 landing-img-wrapper">
 				<img src="/static/images/device.png">
 			</div>
 		</div>
 
-		<div id="team" class="grid-container team">
-			<div class="item1 member">
-				<img class="rounded-circle member-img" src="static/images/Michelle.jpg" alt="Michelle Bryson" style="width:200px">
+    <center> <h2> About </h2> 
+      <p> add descripty things </p>
+    </center>
+
+    <center><br><h2> Meet the Team </h2> </center>
+    <br><br>
+		<div class="team">
+			<div>
+				<img class="rounded-circle" src="static/images/Michelle.jpg" alt="Michelle Bryson">
 				<a href="https://www.linkedin.com/in/michelle-a-bryson/" target="_blank">
-					<h2>Michelle Bryson</h2>
+					<h4><br>Michelle Bryson</h4>
 				</a>
 			</div>
 
-			<div class="item2">
-				<img class="rounded-circle" src="static/images/Kevin.jpeg" alt="Kevin Gauld" style="width:200px">
+			<div>
+				<img class="rounded-circle" src="static/images/Kevin.jpeg" alt="Kevin Gauld">
 				<a href="https://www.linkedin.com/in/kevin-gauld-048b5819b/s" target="_blank">
-					<h2>Kevin Gauld</h2>
+					<h4><br>Kevin Gauld</h4>
 				</a>
 			</div>
 
-			<div class="item3">
-				<img class="rounded-circle" src="static/images/Ethan.png" alt="Ethan Horowitz" style="width:200px">
+			<div>
+				<img class="rounded-circle" src="static/images/Ethan.png" alt="Ethan Horowitz">
 				<a href="https://www.linkedin.com/in/ethan-horowitz-163b791ab/" target="_blank">
-					<h2>Ethan Horowitz</h2>
+					<h4><br>Ethan Horowitz</h4>
 				</a>
 			</div>
 
-			<div class="item4">
-				<img class="rounded-circle" src="static/images/Bach.jpg" alt="Bach Nguyen" style="width:200px">
+			<div>
+				<img class="rounded-circle" src="static/images/Bach.jpg" alt="Bach Nguyen">
 				<a href="https://www.linkedin.com/in/bach-nguyen-36a6511a7" target="_blank">
-					<h2>Bach Nguyen</h2>
+					<h4><br>Bach Nguyen</h4>
 				</a>
 			</div>
 
-			<div class="item5">
-				<img class="rounded-circle" src="static/images/Jendy.png" alt="Jendy Ren" style="width:200px">
+			<div>
+				<img class="rounded-circle" src="static/images/Jendy.png" alt="Jendy Ren">
 				<a href="https://www.linkedin.com/in/jendy/" target="_blank">
-					<h2>Jendy Ren</h2>
+					<h4><br>Jendy Ren</h4>
 				</a>
 			</div>
 
-			<div class="item6">
-				<img class="rounded-circle" src="static/images/Christina.jpg" alt="Christina Wong" style="width:200px">
+			<div>
+				<img class="rounded-circle" src="static/images/Christina.jpg" alt="Christina Wong">
 					<a href="https://www.linkedin.com/in/christina-wong-26baa116b" target="_blank">
-					<h2>Christina Wong</h2>
+					<h4><br>Christina Wong</h4>
 					</a>
 			</div>
 		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="/static/scripts/index.js"></script>
 	</body>
 
 </html>

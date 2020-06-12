@@ -1,5 +1,4 @@
 
-
 .landing-img-wrapper img {
 	width:100%;
 }
@@ -35,34 +34,27 @@ h1 {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-evenly;
 	width: 100%;
 }
 
-.team .member{
-  /* float: left; */
-  /* margin-left: 5%;
-  margin-right: 10%; */
-  /* width: 80%; */
-  /* margin-bottom: 16px; */
+.team div{
   padding: 0 8px;
-	/* display: inline-block; */
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content:  */
 	align-items: center;
+	/* margin: 1em; */
 	
 }
-.member-img {
-	width: 200px;
-}
-.team .member {
+
+.team div img{
 	margin: 0;
 	width: 200px;
 }
 
 .team-member-name {
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 #meet-the-team{

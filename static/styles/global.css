@@ -1,0 +1,32 @@
+body {
+ font-family: 'Lora', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 300;
+}
+
+.navbar-brand {
+  font-family: 'Megrim', cursive;
+  font-size:30px;
+}
+.navbar {
+	padding:20px !important;
+	background: white;
+}
+.nav-link {
+	font-family: 'Montserrat', sans-serif;
+	font-weight:800;
+	color:#333 !important;
+	border-bottom: 2px solid transparent;
+	transition: all 0.2s ease;
+}
+.nav-link:hover {
+	border-bottom: 2px solid #6EB097;
+	transition: all 0.2s ease;
+}
+.active {
+	color: #6EB097 !important;
+	border-bottom: 2px solid #6EB097;
+}
