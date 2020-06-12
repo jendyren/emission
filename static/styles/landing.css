@@ -1,0 +1,81 @@
+
+
+.landing-img-wrapper img {
+	width:100%;
+}
+.landing-text-wrapper {
+	padding:20px;
+	padding-left: 100px;
+}
+.landing-text-wrapper h1 {
+	margin-top: 10%;
+	padding-bottom:25px;
+}
+
+h1 {
+	text-transform: none;
+	font-size: 4.5rem;
+	font-weight:700;
+	color: #333;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.team{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+}
+
+.team .member{
+  /* float: left; */
+  /* margin-left: 5%;
+  margin-right: 10%; */
+  /* width: 80%; */
+  /* margin-bottom: 16px; */
+  padding: 0 8px;
+	/* display: inline-block; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+.member-img {
+	width: 200px;
+}
+.team .member {
+	margin: 0;
+	width: 200px;
+}
+
+.team-member-name {
+  margin-top:20px;
+}
+
+#meet-the-team{
+  margin-top:5%;
+  width: 100%;
+  float: left;
+}
+.container{
+  padding: 0 16px;
+  padding-bottom: 5px;
+}
+
+.card{
+  height: 590px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}

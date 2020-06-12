@@ -7,6 +7,9 @@ authors = ["Your Name <you@example.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 flask = "^1.1"
+pymongo = "^3.10"
+dnspython = "^1.16"
+flask-nav = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 
