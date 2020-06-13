@@ -4,14 +4,19 @@ var type = 'login'
 
 function swap(){
 	if (type == 'login'){
-		switchText.innerHTML = "Sign Up";
+		switchText.innerHTML = "Login";
 		password2.classList.remove('hide');
 		type = 'signup';
+		$("#submit").attr("value", "Sign Up");
+		$("#login-text").html("Create a new account");
 	}
 	else {
-		switchText.innerHTML = "Log In";
+		$("#login-text").html("Sign In");
+		switchText.innerHTML = "Sign Up";
 		password2.classList.add('hide');
+		password2.value = "";
 		type = 'login';
+		$("#submit").attr("value", "Login");
 	}
 	
 }

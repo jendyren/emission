@@ -1,10 +1,43 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, flash
 
 import db
 app = Flask('app')
+app.secret_key = 'super secret string'  # Change this!
+
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
+
+
+import flask_login
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
+
+class User(flask_login.UserMixin):
+    pass
+	
+@login_manager.user_loader
+def user_loader(username):
+    if not db.checkUser("username", username):
+        return
+    user = User()
+    user.id = username
+    return user
+
+@login_manager.request_loader
+def request_loader(request):
+	if request.form:
+		print("Authentication")
+		username = request.form["username"]
+		if not db.checkPassword(username, request.form["password"]):
+			print("User not authenticated!")
+			return
+		user = User()
+		user.id = username
+		
+		#user.is_authenticated = True; # this line is useless LOL
+		print(user)
+		return user
 
 @app.after_request
 def add_header(r):
@@ -27,44 +60,87 @@ def login():
 	# If there is a form submitted
 	if request.form:
 		# If inputPassword2 field is not empty, this is a registration.
-		print("test", request.form)
-		if db.checkUser("username", request.form["username"]):
-			print("Username exists!")
-			return redirect('/dashboard')
+		name = request.form["username"]
+		pwrd = request.form["password"]
+		# Registration
+		if request.form["password2"]:
+			# Check if the user already exists
+			"""
+			if db.checkUser("username", name):
+				flash("User {} already exists!")
+				return render_template('login.html')
+			else:
+			"""
+			print("New user {} registered!".format(name))
+			db.addUser(name, pwrd)
+			flash("User created!")
+			return render_template('login.html', newuser=True)
+		# Validated user
+		elif db.checkUser("username", name) and db.checkPassword(name, pwrd):
+			print(name, "has been verified!")
+			user = User()
+			user.id = request.form["username"]
+			flask_login.login_user(user)
+			return redirect(url_for('dashboard'))
+		# Incorrect username/password/user doesn't exist
 		else:
-			print("Username doesn't exist.")
-			return render_template('login.html', register=True)
+			print("Unauthorized")
+			flash("Incorrect credentials!")
+			return render_template('login.html')
+
 	else:
-		return render_template('login.html', register=False)
+		return render_template('login.html')
+
+# Unauthorized access redirects to login page
+@login_manager.unauthorized_handler
+def unauthorized_handler():
+    return redirect(url_for('login'))
 
 
+"""
+The following pages require authentication
+Current user's username is stored in this variable: flask_login.current_user.id
+"""
 
 @app.route('/dashboard')
-def something():
-	cookie = request.cookies.get('userID')
-	if not db.checkUser('_id', cookie):
-		return redirect('/login')
-	return render_template('index.html')
+@flask_login.login_required
+def dashboard():
+	#cookie = request.cookies.get('userID')
+	print('Logged in as: ' + flask_login.current_user.id)
+	#if not db.checkUser('_id', cookie):
+	#	return redirect('/login')
+	return render_template('index.html', username=flask_login.current_user.id)
 
-@app.route('/leaderboard/<user>')
-def leaderboard(user):
-	return render_template('leaderboard.html', user=user)
+@app.route('/logout')
+@flask_login.login_required
+def logout():
+    flask_login.logout_user()
+    return redirect('/')
+
 
 @app.route('/leaderboard')
-def leaderboard2():
-	return render_template('leaderboard.html')
+@flask_login.login_required
+def leaderboard():
+	username = flask_login.current_user.id
+	return render_template('leaderboard.html', username=username)
 
 @app.route('/settings')
+@flask_login.login_required
 def settings():
-	return render_template('settings.html')
+	username = flask_login.current_user.id
+	return render_template('settings.html', username=username)
 
 @app.route('/profile')
+@flask_login.login_required
 def profile():
-	return render_template('profile.html')
+	username = flask_login.current_user.id
+	return render_template('profile.html', username=username)
 
 
 @app.route('/information')
+@flask_login.login_required
 def info():
-	return render_template('information.html')
+	username = flask_login.current_user.id
+	return render_template('information.html', username=username)
 
 app.run(host='0.0.0.0', port=8080, debug=True)

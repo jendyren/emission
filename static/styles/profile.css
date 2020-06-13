@@ -2,39 +2,78 @@
   width: 100%; /* Width of the outside container */
 }
 
+#select_type {
+	font-family: 'Montserrat', sans-serif;
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 /* The slider itself */
 .slider {
   -webkit-appearance: none;
   appearance: none;
-  width: 20%;
+  width: 50%;
   height: 25px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
 }
 
-/* Mouse-over effects */
+.grid-container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.grid-item {
+  font-size: 20px;
+  text-align: center;
+}
+
+.badge-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.badge {
+  font-size: 10px;
+  text-align: center;
+}
+
 .slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
+  opacity: 1; 
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #4CAF50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  width: 25px; 
+  height: 25px;
+  background: rgb(126, 206, 129);
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #4CAF50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  width: 25px;
+  height: 25px;
+  background: rgb(126, 206, 129);
+  cursor: pointer;
 }
 
 .description {
 	margin-top: 2em;
 	font-size: 2vmin;
+}
+
+.submit-button{
+  font-family: 'Montserrat', sans-serif;
 }

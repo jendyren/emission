@@ -9,6 +9,10 @@ db=client.Emission
 users = db.users
 print("things?", db.list_collection_names())
 
+# For hashing passwords
+import bcrypt
+
+
 def get_part(userId, part):
 	query = {}
 	query[part] = 1
@@ -37,19 +41,20 @@ def checkUser(checkBy, value):
 	return False
 
 def checkPassword(username, password):
-	# hash the password?
-	query = {}
-	query["_id"] = 1
-	p = users.find_one({checkBy: "username"}, query)
+	# hashed the password
+	p = users.find_one({"username": username})
 	if p:
-		print(p)
-		return True
+		try:
+			return bcrypt.checkpw(password, p["password"])
+		except:
+			# in case the password is not salted correctly, invalidate verification
+			return False
 	return False
 
 def addUser(username, password):
 	user = newUser()
 	user['username'] = username 
-	user['password'] = password 
+	user['password'] = bcrypt.hashpw(password, bcrypt.gensalt())
 	users.insert_one(user)
 
 def updateActivity(id, activity, value):

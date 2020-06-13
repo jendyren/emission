@@ -10,6 +10,8 @@ flask = "^1.1"
 pymongo = "^3.10"
 dnspython = "^1.16"
 flask-nav = "^0.6.0"
+Flask-Login = "^0.5.0"
+py-bcrypt = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
 

@@ -1,34 +1,148 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		{% include "partials/header.html" %}
-		<link rel="stylesheet" href="/static/styles/profile.css">
-		{% include "partials/full navbar.html" %}
-	</head>
-	<body>
 
+<head>
+	{% include "partials/header.html" %}
+
+	<link rel="stylesheet" href="/static/styles/profile.css"> {% include "partials/full navbar.html" %}
+</head>
+
+<body>
+	<center>
 		<h2> Profile </h2>
 
-    
-    <div class="slidercontainer">
-        <input type="range" min="1" max="10" value = "5" class="slider" id="myRange">
+		<div class="grid-container">
+			<div class="grid-item">
+
+				<p> Badges </p>
+				<div class="badge-container">
+					<div class="badge">
+						<img src="static/images/badge.png" width=50%>
+            </div>
+
+            <div class="badge">
+              <img src="static/images/badge.png" width=50%>
+            </div>
+
+            <div class="badge">
+              <img src="static/images/badge.png" width=50%>
+            </div>
+
+            <div class="badge">
+              <img src="static/images/badge.png" width=50%>
+            </div>
+          </div>
+        
+        <br><br>
+        <p> Challenges </p>
+        </div>
+		
+        <div class="grid-item">
+          <select class="form-control form-control-lg" name="select-menu" id="select_type" onchange="flipDescription()">
+            <option value="general-transit"> General Transit </option>
+            <option value="daily-transit"> Daily Transit </option>
+            <option value="diet"> Diet </option>
+            <option value="energy"> Energy </option>
+            <option value="wardrobe"> Wardrobe </option>
+            <option value="recycling"> Recycling </option>
+            <option value="water"> Water </option>
+          </select>
+
+          
+          <form id="general-transit-survey" class ="description">
+            <p> Have many times have you flown this year? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider" id="myRange">
+            </div>
+            <label id="flight_val"> </label>
+
+            <p> Average flight time? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider"">
+            </div>
+
+            <p> How many miles do you drive everyday? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider"">
+            </div>
+
+            <p> How many miles per gallon does your car get? </p>
+            <div class="slidercontainer">
+                <input type="range" min="1" max="50" value = "25" class="slider" >
+            </div>
+            <p> </p>
+            <input class="submit-button" type="submit">
+          </form>
+
+          <form id="daily-transit-survey" class = "description hide">
+            <p> How far did you drive today? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider" >
+            </div>
+            <p> </p>
+            <input class="submit-button" type="submit">
+          </form>
+
+          <form id="diet-survey" class = "description hide">
+            <p> QUESTION? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider" >
+            </div>
+            <p> </p>
+            <input class="submit-button" type="submit">
+          </form>
+
+          <form id="energy-survey" class = "description hide">
+            <p> QUESTION? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider" >
+            </div>
+            <p> </p>
+            <input class="submit-button" type="submit">
+          </form>
+
+
+          <form id="wardrobe-survey" class = "description hide">
+            <p> QUESTION? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider>
+            </div>
+            <p> </p>
+            <input class="submit-button" type="submit">
+          </form>
+
+
+          <form id="recycling-survey" class = "description hide">
+            <p> QUESTION? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider>
+            </div>
+            <p> </p>
+            <input class="submit-button" type="submit">
+          </form>
+
+
+
+          <form id="water-survey" class = "description hide">
+            <p> QUESTION? </p>
+            <div class="slidercontainer">
+              <input type="range" min="1" max="50" value = "25" class="slider>
+            </div>
+            <p> </p>
+
+            <input class="submit-button" type="submit">
+          </form>
+        </div>
+   
+        
      </div>
 
-    <select name="area" id="select_type" onchange="flipDescription()">
-        <option value="transit"> Transit </option>
-        <option value="diet"> Diet </option>
-        <option value="energy"> Energy </option>
-        <option value="wardrobe"> Wardrobe </option>
-        <option value="recycling"> Recycling </option>
-        <option value="water"> Water </option>
-    </select>
-
-    <div id="descriptions">
     
-
+    
+    </center>
 
 		{% include "partials/include js.html" %}
-    <script src="scripts/profile.js"> </script>
+    
+    <script src="/static/scripts/profile.js"></script>
 	</body>
-
 </html>

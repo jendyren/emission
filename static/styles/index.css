@@ -4,7 +4,23 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
  font-family: 'Montserrat', sans-serif;
- font-weight: 300;
+ font-weight: 700 !important;
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+	font-size:20px;
+}
+
+a {
+	font-weight:600 !important;
+	color: #7fcdfa;
+	transition:all 0.2s ease;
+}
+a:hover {
+	color:#34ebd8;
+	text-decoration:none;
+	transition:all 0.2s ease;
 }
 
 /* go to global.css for navbar */
@@ -168,3 +184,4 @@ BUTTONS
 	box-shadow: 10px 10px 75px -5px rgba(208,255,209,1);
 	transition:all 0.2s ease;
 }
+
