@@ -48,41 +48,46 @@
             <option value="water"> Water </option>
           </select>
 
-          
+          <!-- General Transit Survey -->
           <form id="general-transit-survey" class ="description">
             <p> Have many times have you flown this year? </p>
             <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider" id="myRange">
+              <input type="range" min="0" max="15" value = "7" class="slider" id="num_times_flown_slider">
             </div>
-            <label id="flight_val"> </label>
+            <label class="value_label" id="num_flown_val"> 7 </label>
 
-            <p> Average flight time? </p>
+            <p> Average flight time (hours)? </p>
             <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider"">
+              <input type="range" min="0" max="18" value = "9" class="slider" id="flight_time_slider">
             </div>
-
-            <p> How many miles do you drive everyday? </p>
-            <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider"">
-            </div>
+            <label class="value_label" id="flight_time_val"> 9 </label>
 
             <p> How many miles per gallon does your car get? </p>
             <div class="slidercontainer">
-                <input type="range" min="1" max="50" value = "25" class="slider" >
+                <input type="range" min="" max="60" value = "30" class="slider" id="mpg_slider">
             </div>
+            <label class="value_label" id="mpg_val"> 30 </label>
+
             <p> </p>
+            
+
             <input class="submit-button" type="submit">
           </form>
+          
 
+          <!-- Daily Transit Survey -->
           <form id="daily-transit-survey" class = "description hide">
-            <p> How far did you drive today? </p>
+            <p> How many miles do you drive everyday? </p>
             <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider" >
+              <input type="range" min="0" max="900" value = "450" class="slider" id="miles_slider">
             </div>
+            <label class="value_label" id="miles_val"> 450 </label>
+
             <p> </p>
             <input class="submit-button" type="submit">
           </form>
 
+          <!-- General Transit Survey -->
           <form id="diet-survey" class = "description hide">
             <p> QUESTION? </p>
             <div class="slidercontainer">
@@ -92,6 +97,7 @@
             <input class="submit-button" type="submit">
           </form>
 
+          <!-- General Transit Survey -->
           <form id="energy-survey" class = "description hide">
             <p> QUESTION? </p>
             <div class="slidercontainer">
@@ -105,7 +111,7 @@
           <form id="wardrobe-survey" class = "description hide">
             <p> QUESTION? </p>
             <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider>
+              <input type="range" min="1" max="50" value = "25" class="slider">
             </div>
             <p> </p>
             <input class="submit-button" type="submit">
@@ -115,7 +121,7 @@
           <form id="recycling-survey" class = "description hide">
             <p> QUESTION? </p>
             <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider>
+              <input type="range" min="1" max="50" value = "25" class="slider">
             </div>
             <p> </p>
             <input class="submit-button" type="submit">
@@ -126,7 +132,7 @@
           <form id="water-survey" class = "description hide">
             <p> QUESTION? </p>
             <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider>
+              <input type="range" min="1" max="50" value = "25" class="slider">
             </div>
             <p> </p>
 

@@ -14,7 +14,7 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 class User(flask_login.UserMixin):
-    pass
+  pass
 	
 @login_manager.user_loader
 def user_loader(username):
@@ -65,16 +65,23 @@ def login():
 		# Registration
 		if request.form["password2"]:
 			# Check if the user already exists
-			"""
+
+			if (pwrd != request.form["password2"]):
+				flash("Passwords do not match!")
+				return render_template('login.html')
+			if (len(pwrd) <= 6):
+				flash("Password must be at least 6 characters.")
+				return render_template('login.html')
+		
 			if db.checkUser("username", name):
-				flash("User {} already exists!")
+				flash("User '{}' already exists!".format(name))
 				return render_template('login.html')
 			else:
-			"""
-			print("New user {} registered!".format(name))
-			db.addUser(name, pwrd)
-			flash("User created!")
-			return render_template('login.html', newuser=True)
+				print("New user {} registered!".format(name))
+				db.addUser(name, pwrd)
+				flash("User created!")
+				return render_template('login.html', newuser=True)
+			
 		# Validated user
 		elif db.checkUser("username", name) and db.checkPassword(name, pwrd):
 			print(name, "has been verified!")
@@ -82,7 +89,7 @@ def login():
 			user.id = request.form["username"]
 			flask_login.login_user(user)
 			return redirect(url_for('dashboard'))
-		# Incorrect username/password/user doesn't exist
+
 		else:
 			print("Unauthorized")
 			flash("Incorrect credentials!")

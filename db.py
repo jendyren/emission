@@ -7,7 +7,6 @@ mongoUri = "mongodb+srv://HexHax:" + mongoPassword + "@hackathons-nfrzv.mongodb.
 client = MongoClient(mongoUri)
 db=client.Emission
 users = db.users
-print("things?", db.list_collection_names())
 
 # For hashing passwords
 import bcrypt
@@ -58,4 +57,5 @@ def addUser(username, password):
 	users.insert_one(user)
 
 def updateActivity(id, activity, value):
-	pass
+	newVales = { "$set": {	activity: value } }
+	users.update_one({'_id': id}, {newVales})
