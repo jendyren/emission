@@ -5,20 +5,27 @@
 		<link rel="stylesheet" href="/static/styles/leaderboard.css">
 		{% include "partials/full navbar.html" %}
 	</head>
-	<body id="leaderboards-page" onload="toggle_leaderboards('overall')">
+	<body id="leaderboards-page" onload="toggle_leaderboards()">
 		<center>
 			<h2> Leaderboard </h2>
+      <p> Use the toggle to see how you compare</p>
 		</center>
-      <div onclick="toggle_leaderboards('overall')">
-        <h2> Overall</h2> press this to view overall
-      </div>
 
-      <div onclick="toggle_leaderboards('just_friends')">
-        <h2> Just Friends </h2> press this to view friends
-      </div>
+      <label class="switch" onchange="toggle_leaderboards()">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
 
-      <div id="overall"> overall </div>
-      <div id="just_friends"> just friends </div>
+      <div id="overall"> OVERALL 
+        <li> uno </li>
+        <li> dos </li>
+        <li> tres </li>
+      </div>
+      <div id="just_friends" class="hidden"> JUST YA FRIENDOS 
+        <li> uno 1</li>
+        <li> dos 2</li>
+        <li> tres 3</li>
+      </div>
       <center>
 
       <!--

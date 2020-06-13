@@ -1,16 +1,22 @@
-var currently_visible = "overall";
+var currently_visible = "";
 
-function toggle_leaderboards(id){
-  var current_leaderboard = document.getElementById("overall");
-  var new_leaderboard = document.getElementById(id);
-  
-  if (current_leaderboard){
-    console.log(currently_visible)
-    current_leaderboard.style.display = "none";
+function toggle_leaderboards(){
+  var overall_leaderboard = document.getElementById("overall");
+  var friends_leaderboard = document.getElementById("just_friends");
+  if (currently_visible == ""){
+    overall_leaderboard.style.display = "block";
+    currently_visible = "overall";
   }
-
-  new_leaderboard.style.display = 'block';
-  currently_visible = id;
+  else if (currently_visible == "overall"){
+    overall_leaderboard.style.display = "none";
+    friends_leaderboard.style.display = "block";
+    currently_visible = "just_friends";
+  }
+  else if (currently_visible == "just_friends"){
+    overall_leaderboard.style.display = "block";
+    friends_leaderboard.style.display = "none";
+    currently_visible = "overall";
+  }
 }
 
 /*fetch('/get-leader', {
