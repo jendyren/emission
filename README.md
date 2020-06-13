@@ -11,5 +11,5 @@ With emission, you can get a tangible idea of how your actions impact the enviro
 • JavaScript  
 • Chart.js  
 • Python  
-• MongoDB
+• MongoDB  
 • UiPath
