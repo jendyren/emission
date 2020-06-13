@@ -136,17 +136,46 @@ def settings():
 	username = flask_login.current_user.id
 	return render_template('settings.html', username=username)
 
+@app.route('/chatbot')
+@flask_login.login_required
+def chatbot():
+	username = flask_login.current_user.id
+	return render_template('chatbot.html', username=username)
+
 @app.route('/profile', methods=['GET', 'POST'])
 @flask_login.login_required
 def profile():
 	if request.method == 'POST':
-		print("something")
-		userid = request.cookies.get('userID')
-		return jsonify({"respose": userid})
+		if request.form: 
+			userid = request.cookies.get('userID')
+			activities = {}
+			for i in request.form:
+				val = request.form[i]
+				if val.isdigit(): val = int(val)
+				activities['activities.' + i.replace('-', '.')] = val				
+			
+			db.updateActivities(userid, activities)
+			return jsonify({"respose": userid})
+		return ""
 	else:
 		username = flask_login.current_user.id
 		return render_template('profile.html', username=username)
 
+@app.route('/get-info', methods=['POST'])
+@flask_login.login_required
+def getInfo():
+	data = request.get_json()['parts']
+	userid = request.cookies.get('userID')
+	re = db.get_data(userid, data)
+	return jsonify(re)
+
+@app.route('/get-leader', methods=['POST'])
+@flask_login.login_required
+def getLeader():
+	print("getting leader")
+	userid = request.cookies.get('userID')
+	re = db.get_leaderboard(userid)
+	return jsonify(re)
 
 @app.route('/information')
 @flask_login.login_required

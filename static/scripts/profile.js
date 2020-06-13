@@ -10,84 +10,40 @@ function flipDescription(){
 	document.getElementById(select.value + '-survey').classList.remove('hide');
 }
 
-// Update the current slider value (each time you drag the slider handle)
+var names = [];
 
-document.getElementById("num_times_flown_slider").oninput = function() {
-  document.getElementById("num_flown_val").innerHTML = this.value;
+var sliders = document.getElementsByClassName('slider');
+for (let el of sliders){
+	let id = el.id;
+	let label = id.replace('_slider', "_val");
+	names.push('activities.' + el.name.replace('-', '.'));
+	el.oninput = function(){
+		console.log(label);
+		document.getElementById(label).innerHTML = this.value;	
+	}
 }
 
-document.getElementById("flight_time_slider").oninput = function() {
-  document.getElementById("flight_time_val").innerHTML = this.value;
-}
-
-document.getElementById("mpg_slider").oninput = function() {
-  document.getElementById("mpg_val").innerHTML = this.value;
-}
-
-document.getElementById("miles_slider").oninput = function() {
-  document.getElementById("miles_val").innerHTML = this.value;
-}
-
-document.getElementById("m_bfast_slider").oninput = function() {
-  document.getElementById("m_bfast_val").innerHTML = this.value;
-}
-
-document.getElementById("g_bfast_slider").oninput = function() {
-  document.getElementById("g_bfast_val").innerHTML = this.value;
-}
-
-document.getElementById("d_bfast_slider").oninput = function() {
-  document.getElementById("d_bfast_val").innerHTML = this.value;
-}
-
-document.getElementById("f_bfast_slider").oninput = function() {
-  document.getElementById("f_bfast_val").innerHTML = this.value;
-}
-
-document.getElementById("m_lunch_slider").oninput = function() {
-  document.getElementById("m_lunch_val").innerHTML = this.value;
-}
-
-document.getElementById("g_lunch_slider").oninput = function() {
-  document.getElementById("g_lunch_val").innerHTML = this.value;
-}
-
-document.getElementById("d_lunch_slider").oninput = function() {
-  document.getElementById("d_lunch_val").innerHTML = this.value;
-}
-
-document.getElementById("f_lunch_slider").oninput = function() {
-  document.getElementById("f_lunch_val").innerHTML = this.value;
-}
-
-document.getElementById("m_dinner_slider").oninput = function() {
-  document.getElementById("m_dinner_val").innerHTML = this.value;
-}
-
-document.getElementById("g_dinner_slider").oninput = function() {
-  document.getElementById("g_dinner_val").innerHTML = this.value;
-}
-
-document.getElementById("d_dinner_slider").oninput = function() {
-  document.getElementById("d_dinner_val").innerHTML = this.value;
-}
-
-document.getElementById("f_dinner_slider").oninput = function() {
-  document.getElementById("f_dinner_val").innerHTML = this.value;
-}
-
-document.getElementById("m_snack_slider").oninput = function() {
-  document.getElementById("m_snack_val").innerHTML = this.value;
-}
-
-document.getElementById("g_snack_slider").oninput = function() {
-  document.getElementById("g_snack_val").innerHTML = this.value;
-}
-
-document.getElementById("d_snack_slider").oninput = function() {
-  document.getElementById("d_snack_val").innerHTML = this.value;
-}
-
-document.getElementById("f_snack_slider").oninput = function() {
-  document.getElementById("f_snack_val").innerHTML = this.value;
-}
+fetch('/get-info', {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({parts: names})
+}).then(response => response.json()).then(data => {
+	data = data.activities;
+	console.log(data)
+	for (let key of Object.keys(data)){
+		inner = Object.keys(data[key]);
+		console.log('inner', inner);
+		for (let p of inner){
+			let id = p;
+			let val = data[key][p];
+			if (document.getElementById(p + '_slider')){
+				document.getElementById(p + '_slider').value = val;
+			}
+			if (document.getElementById(p + 'val')){
+				document.getElementById(p + 'val').innerHTML = val;
+			}
+		}
+	}
+});

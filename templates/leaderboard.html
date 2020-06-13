@@ -2,15 +2,54 @@
 <html>
 	<head>
 		{% include "partials/header.html" %}
-		<link rel="stylesheet" href="/static/styles/profile.css">
+		<link rel="stylesheet" href="/static/styles/leaderboard.css">
 		{% include "partials/full navbar.html" %}
 	</head>
-	<body>
+	<body id="leaderboards-page" onload="toggle_leaderboards('overall')">
 		<center>
 			<h2> Leaderboard </h2>
+		</center>
+      <div onclick="toggle_leaderboards('overall')">
+        <h2> Overall</h2> press this to view overall
+      </div>
+
+      <div onclick="toggle_leaderboards('just_friends')">
+        <h2> Just Friends </h2> press this to view friends
+      </div>
+
+      <div id="overall"> overall </div>
+      <div id="just_friends"> just friends </div>
+      <center>
+
+      <!--
 			<img src="https://cdn.discordapp.com/attachments/720100330993483796/721160186739556402/trophy.png" alt="trophy" width="20%">
 
+
+      <p> Badges </p>
+				<div class="badge-container">
+					<div class="badge">
+						<img src="static/images/badge.png" width=50%>
+            </div>
+
+            <div class="badge">
+              <img src="static/images/badge.png" width=50%>
+            </div>
+
+            <div class="badge">
+              <img src="static/images/badge.png" width=50%>
+            </div>
+
+            <div class="badge">
+              <img src="static/images/badge.png" width=50%>
+            </div>
+          </div>
+        
+        <br><br>
+        <p> Challenges </p>
 		</center>
+    
+    -->
+		<script src='/static/scripts/leaderboard.js'></script>
 		{% include "partials/include js.html" %}
 	</body>
 

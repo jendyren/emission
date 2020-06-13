@@ -1,0 +1,12 @@
+
+.badge-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.badge {
+  font-size: 10px;
+  text-align: center;
+}

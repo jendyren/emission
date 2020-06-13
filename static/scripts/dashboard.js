@@ -19,3 +19,16 @@ $( document ).ready(function() {
 		}
 	}); //End chart
 });
+
+var currentDate = new Date();
+var hour = currentDate.getHours();
+
+if (hour < 12){
+  document.getElementById("time_of_day").innerHTML = "Good Morning!"
+}
+else if ((hour >= 12) && (hour < 18)){
+  document.getElementById("time_of_day").innerHTML = "Good Afternoon!"
+}
+else {
+  document.getElementById("time_of_day").innerHTML = "Good Evening!"
+}

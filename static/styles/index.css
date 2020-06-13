@@ -86,6 +86,8 @@ body {
 	border-bottom: 2px solid #6EB097;
 } */
 
+
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -130,20 +132,6 @@ body {
 }
 
 
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.05rem;
-}
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -154,10 +142,6 @@ body {
     margin-bottom: 1.25rem;
     font-size: 1.25rem;
     line-height: 1.4;
-  }
-
-  .featurette-heading {
-    font-size: 50px;
   }
 }
 

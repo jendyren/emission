@@ -13,7 +13,7 @@
 .slider {
   -webkit-appearance: none;
   appearance: none;
-  width: 50%;
+  width: 30%;
   height: 25px;
   background: #d3d3d3;
   outline: none;
@@ -37,16 +37,15 @@
   text-align: center;
 }
 
-.badge-container {
+.area-description-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 10px;
-  padding: 10px;
+  grid-template-columns: 120px auto;
+  margin-left: 20px;
 }
 
-.badge {
+.area-description {
   font-size: 10px;
-  text-align: center;
+  text-align: left;
 }
 
 .slider:hover {

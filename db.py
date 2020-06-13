@@ -29,6 +29,7 @@ def newUser():
 	user = {
 		"username": "",
 		"password": "",
+		"score": 0,
 		"settings": {
 		},
 		"activities": {
@@ -62,6 +63,36 @@ def addUser(username, password):
 	user['password'] = bcrypt.hashpw(password, bcrypt.gensalt())
 	users.insert_one(user)
 
-def updateActivity(id, activity, value):
-	newVales = { "$set": {	activity: value } }
-	users.update_one({'_id': id}, {newVales})
+def updateActivities(userid, activities):
+	newValues = { "$set": activities }
+	print(users.update_one({'_id': ObjectId(userid)}, newValues))
+
+def get_data(userid, parts):
+	query = {'_id': 0}
+
+	for i in parts:
+		query[i] = 1
+	p = users.find_one({'_id': ObjectId(userid)}, query)
+	return p
+
+def get_leaderboard(id):
+	participants = users.find({}, {'username': 1, 'score': 1})
+	print("part", participants[0])
+	parts = []
+	found = False
+	index = 0
+	for x in participants:
+		if x['_id'] == id: 
+			break
+		if found and len(parts)-index >= 5:
+				break
+		parts.append(x)
+		if not found: index += 1
+	
+	place = len(parts) - 10
+	return {
+		"places": [place, place+10],
+		"participants": parts[-10:-1]
+	}
+
+	
