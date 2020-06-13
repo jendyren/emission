@@ -8,9 +8,15 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="nav navbar-nav mr-auto"></ul>
 		<ul class="nav navbar-nav">
+			{% if username %}
+			<li class="nav-item">
+				<a class="nav-link" href="/logout">Log Out</a>
+			</li>
+			{% else %}
 			<li class="nav-item">
 				<a class="nav-link active" href="/login">Login</a>
 			</li>
+			{% endif %}
 		</ul>
 	</div>
 </nav>

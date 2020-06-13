@@ -1,9 +1,10 @@
 $( document ).ready(function() {
 	new Chart(document.getElementById("line-chart"), {
 		type: 'line',
+		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 		data: {
 		datasets: [{
-			data: [0,3,2,5,2,2,45,23,5,3,6,23,512,35,35,4,,346,3],
+			data: [0,3,10,6,10,3],
 			label: "Some label",
 			borderColor: "#3e95cd",
 			fill: false
@@ -11,10 +12,10 @@ $( document ).ready(function() {
 		]
 		},
 		options: {
-		title: {
-			display: true,
-			text: 'Some title'
-		}
+			title: {
+				display: true,
+				text: 'Some title'
+			}
 		}
 	}); //End chart
-};
+});

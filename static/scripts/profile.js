@@ -12,26 +12,82 @@ function flipDescription(){
 
 // Update the current slider value (each time you drag the slider handle)
 
-var flight_val_slider = document.getElementById("num_times_flown_slider");
-var flight_val = document.getElementById("num_flown_val");
-flight_val_slider.oninput = function() {
-  flight_val.innerHTML = this.value;
+document.getElementById("num_times_flown_slider").oninput = function() {
+  document.getElementById("num_flown_val").innerHTML = this.value;
 }
 
-var flight_time_slider = document.getElementById("flight_time_slider");
-var flight_time = document.getElementById("flight_time_val");
-flight_time_slider.oninput = function() {
-  flight_time.innerHTML = this.value;
+document.getElementById("flight_time_slider").oninput = function() {
+  document.getElementById("flight_time_val").innerHTML = this.value;
 }
 
-var mpg_slider = document.getElementById("mpg_slider");
-var mpg = document.getElementById("mpg_val");
-mpg_slider.oninput = function() {
-  mpg.innerHTML = this.value;
+document.getElementById("mpg_slider").oninput = function() {
+  document.getElementById("mpg_val").innerHTML = this.value;
 }
 
-var miles_slider = document.getElementById("miles_slider");
-var miles = document.getElementById("miles_val");
-miles_slider.oninput = function() {
-  miles.innerHTML = this.value;
+document.getElementById("miles_slider").oninput = function() {
+  document.getElementById("miles_val").innerHTML = this.value;
+}
+
+document.getElementById("m_bfast_slider").oninput = function() {
+  document.getElementById("m_bfast_val").innerHTML = this.value;
+}
+
+document.getElementById("g_bfast_slider").oninput = function() {
+  document.getElementById("g_bfast_val").innerHTML = this.value;
+}
+
+document.getElementById("d_bfast_slider").oninput = function() {
+  document.getElementById("d_bfast_val").innerHTML = this.value;
+}
+
+document.getElementById("f_bfast_slider").oninput = function() {
+  document.getElementById("f_bfast_val").innerHTML = this.value;
+}
+
+document.getElementById("m_lunch_slider").oninput = function() {
+  document.getElementById("m_lunch_val").innerHTML = this.value;
+}
+
+document.getElementById("g_lunch_slider").oninput = function() {
+  document.getElementById("g_lunch_val").innerHTML = this.value;
+}
+
+document.getElementById("d_lunch_slider").oninput = function() {
+  document.getElementById("d_lunch_val").innerHTML = this.value;
+}
+
+document.getElementById("f_lunch_slider").oninput = function() {
+  document.getElementById("f_lunch_val").innerHTML = this.value;
+}
+
+document.getElementById("m_dinner_slider").oninput = function() {
+  document.getElementById("m_dinner_val").innerHTML = this.value;
+}
+
+document.getElementById("g_dinner_slider").oninput = function() {
+  document.getElementById("g_dinner_val").innerHTML = this.value;
+}
+
+document.getElementById("d_dinner_slider").oninput = function() {
+  document.getElementById("d_dinner_val").innerHTML = this.value;
+}
+
+document.getElementById("f_dinner_slider").oninput = function() {
+  document.getElementById("f_dinner_val").innerHTML = this.value;
+}
+
+document.getElementById("m_snack_slider").oninput = function() {
+  document.getElementById("m_snack_val").innerHTML = this.value;
+}
+
+document.getElementById("g_snack_slider").oninput = function() {
+  document.getElementById("g_snack_val").innerHTML = this.value;
+}
+
+document.getElementById("d_snack_slider").oninput = function() {
+  document.getElementById("d_snack_val").innerHTML = this.value;
+}
+
+document.getElementById("f_snack_slider").oninput = function() {
+  document.getElementById("f_snack_val").innerHTML = this.value;
 }

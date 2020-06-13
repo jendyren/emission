@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, flash
+from flask import Flask, render_template, url_for, request, redirect, flash, Response, make_response, jsonify
 
 import db
 app = Flask('app')
@@ -15,7 +15,7 @@ login_manager.init_app(app)
 
 class User(flask_login.UserMixin):
   pass
-	
+
 @login_manager.user_loader
 def user_loader(username):
     if not db.checkUser("username", username):
@@ -36,7 +36,6 @@ def request_loader(request):
 		user.id = username
 		
 		#user.is_authenticated = True; # this line is useless LOL
-		print(user)
 		return user
 
 @app.after_request
@@ -87,8 +86,11 @@ def login():
 			print(name, "has been verified!")
 			user = User()
 			user.id = request.form["username"]
+			userid = str(db.getPartWith('username', user.id, '_id'))
+			resp = make_response(redirect(url_for('dashboard')))
+			resp.set_cookie('userID', userid)
 			flask_login.login_user(user)
-			return redirect(url_for('dashboard'))
+			return resp
 
 		else:
 			print("Unauthorized")
@@ -112,10 +114,7 @@ Current user's username is stored in this variable: flask_login.current_user.id
 @app.route('/dashboard')
 @flask_login.login_required
 def dashboard():
-	#cookie = request.cookies.get('userID')
 	print('Logged in as: ' + flask_login.current_user.id)
-	#if not db.checkUser('_id', cookie):
-	#	return redirect('/login')
 	return render_template('index.html', username=flask_login.current_user.id)
 
 @app.route('/logout')
@@ -137,11 +136,16 @@ def settings():
 	username = flask_login.current_user.id
 	return render_template('settings.html', username=username)
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 @flask_login.login_required
 def profile():
-	username = flask_login.current_user.id
-	return render_template('profile.html', username=username)
+	if request.method == 'POST':
+		print("something")
+		userid = request.cookies.get('userID')
+		return jsonify({"respose": userid})
+	else:
+		username = flask_login.current_user.id
+		return render_template('profile.html', username=username)
 
 
 @app.route('/information')

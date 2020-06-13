@@ -49,46 +49,145 @@
           </select>
 
           <!-- General Transit Survey -->
-          <form id="general-transit-survey" class ="description">
-            <p> Have many times have you flown this year? </p>
+          <form id="general-transit-survey" class ="description" method="POST">
+            <h5> Have many times have you flown this year? </h5>
             <div class="slidercontainer">
-              <input type="range" min="0" max="15" value = "7" class="slider" id="num_times_flown_slider">
+              <input name="transit-flown" type="range" min="0" max="15" value = "7" class="slider" id="num_times_flown_slider">
             </div>
             <label class="value_label" id="num_flown_val"> 7 </label>
 
-            <p> Average flight time (hours)? </p>
+            <h5> Average flight time (hours)? </h5>
             <div class="slidercontainer">
               <input type="range" min="0" max="18" value = "9" class="slider" id="flight_time_slider">
             </div>
             <label class="value_label" id="flight_time_val"> 9 </label>
 
-            <p> How many miles per gallon does your car get? </p>
+            <h5> How many miles per gallon does your car get? </h5>
             <div class="slidercontainer">
                 <input type="range" min="" max="60" value = "30" class="slider" id="mpg_slider">
             </div>
             <label class="value_label" id="mpg_val"> 30 </label>
-
-            <p> </p>
-            
-
+            <br>
             <input class="submit-button" type="submit">
           </form>
           
 
           <!-- Daily Transit Survey -->
-          <form id="daily-transit-survey" class = "description hide">
-            <p> How many miles do you drive everyday? </p>
+          <form id="daily-transit-survey" class = "description hide" method="POST">
+            <h5> How many miles do you drive everyday? </h5>
             <div class="slidercontainer">
               <input type="range" min="0" max="900" value = "450" class="slider" id="miles_slider">
             </div>
             <label class="value_label" id="miles_val"> 450 </label>
-
-            <p> </p>
+            <br>
             <input class="submit-button" type="submit">
           </form>
 
-          <!-- General Transit Survey -->
-          <form id="diet-survey" class = "description hide">
+          <!-- Daily Diet Survey -->
+          <form id="diet-survey" class = "description hide" method="POST">
+            <h5> What did you eat for breakfast (calories)? </h5><br>
+
+            <p>Meat/Fish/Eggs</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="m_bfast_slider">
+            </div>
+            <label class="value_label" id="m_bfast_val"> 450 </label>
+
+            <p>Grains/Baked Goods</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="g_bfast_slider">
+            </div><label class="value_label" id="g_bfast_val"> 450 </label>
+
+            <p>Dairy</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="d_bfast_slider">
+            </div>
+            <label class="value_label" id="d_bfast_val"> 450 </label>
+
+            <p>Fruits/Vegetables</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="f_bfast_slider">
+            </div>
+            <label class="value_label" id="f_bfast_val"> 450 </label>
+
+
+            <h5> What did you eat for lunch (calories)? </h5>
+            <p>Meat/Fish/Eggs</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="m_lunch_slider">
+            </div>
+            <label class="value_label" id="m_lunch_val"> 450 </label>
+
+            <p>Grains/Baked Goods</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="g_lunch_slider">
+            </div><label class="value_label" id="g_lunch_val"> 450 </label>
+
+            <p>Dairy</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="d_lunch_slider">
+            </div>
+            <label class="value_label" id="d_lunch_val"> 450 </label>
+
+            <p>Fruits/Vegetables</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="f_lunch_slider">
+            </div>
+            <label class="value_label" id="f_lunch_val"> 450 </label>
+
+            <h5> What did you eat for dinner (calories)? </h5>
+            <p>Meat/Fish/Eggs</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="m_dinner_slider">
+            </div>
+            <label class="value_label" id="m_dinner_val"> 450 </label>
+
+            <p>Grains/Baked Goods</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="g_dinner_slider">
+            </div><label class="value_label" id="g_dinner_val"> 450 </label>
+
+            <p>Dairy</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="d_dinner_slider">
+            </div>
+            <label class="value_label" id="d_dinner_val"> 450 </label>
+
+            <p>Fruits/Vegetables</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="f_dinner_slider">
+            </div>
+            <label class="value_label" id="f_dinner_val"> 450 </label>
+            
+            <h5> What did you eat for snacks? </h5>
+            <p>Meat/Fish/Eggs</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="m_snack_slider">
+            </div>
+            <label class="value_label" id="m_snack_val"> 450 </label>
+
+            <p>Grains/Baked Goods</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="g_snack_slider">
+            </div><label class="value_label" id="g_snack_val"> 450 </label>
+
+            <p>Dairy</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="d_snack_slider">
+            </div>
+            <label class="value_label" id="d_snack_val"> 450 </label>
+
+            <p>Fruits/Vegetables</p>
+            <div class="slidercontainer">
+              <input type="range" min="0" max="10000" value = "5000" class="slider" id="f_snack_slider">
+            </div>
+            <label class="value_label" id="f_snack_val"> 450 </label>
+            <br>
+            <input class="submit-button" type="submit">
+          </form>
+
+          <!-- General Energy Survey -->
+          <form id="energy-survey" class = "description hide" method="POST">
             <p> QUESTION? </p>
             <div class="slidercontainer">
               <input type="range" min="1" max="50" value = "25" class="slider" >
@@ -97,18 +196,18 @@
             <input class="submit-button" type="submit">
           </form>
 
-          <!-- General Transit Survey -->
-          <form id="energy-survey" class = "description hide">
+          <!-- General Wardrobe Survey -->
+          <form id="wardrobe-survey" class = "description hide" method="POST">
             <p> QUESTION? </p>
             <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider" >
+              <input type="range" min="1" max="50" value = "25" class="slider">
             </div>
             <p> </p>
             <input class="submit-button" type="submit">
           </form>
 
-
-          <form id="wardrobe-survey" class = "description hide">
+          <!-- General Recyling Survey -->
+          <form id="recycling-survey" class = "description hide" method="POST">
             <p> QUESTION? </p>
             <div class="slidercontainer">
               <input type="range" min="1" max="50" value = "25" class="slider">
@@ -118,18 +217,8 @@
           </form>
 
 
-          <form id="recycling-survey" class = "description hide">
-            <p> QUESTION? </p>
-            <div class="slidercontainer">
-              <input type="range" min="1" max="50" value = "25" class="slider">
-            </div>
-            <p> </p>
-            <input class="submit-button" type="submit">
-          </form>
-
-
-
-          <form id="water-survey" class = "description hide">
+          <!-- General Water Survey -->
+          <form id="water-survey" class = "description hide" method="POST">
             <p> QUESTION? </p>
             <div class="slidercontainer">
               <input type="range" min="1" max="50" value = "25" class="slider">

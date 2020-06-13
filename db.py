@@ -19,6 +19,12 @@ def get_part(userId, part):
 	print(p)
 	return p
 
+def getPartWith(by, value, part):
+	query = {}
+	query[part] = 1
+	p = users.find_one({by: value}, query)
+	return p[part]
+
 def newUser():
 	user = {
 		"username": "",

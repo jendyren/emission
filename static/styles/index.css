@@ -23,6 +23,25 @@ a:hover {
 	transition:all 0.2s ease;
 }
 
+.greeting{
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+  margin-top:0px;
+}
+
+.grid-container > div {
+  padding: 10px 0;
+}
+
 /* go to global.css for navbar */
 /* .navbar{
   box-shadow: 2px 4px 10px 2px rgb(211, 211, 211);
@@ -84,7 +103,7 @@ body {
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
-  background-color: #777;
+  background-color: #eee;
 }
 .carousel-item > img {
   position: absolute;
