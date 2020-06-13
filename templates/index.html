@@ -1,43 +1,48 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+</html>
+	<head>
+		{% include "partials/header.html" %}
+		{% include "partials/full navbar.html" %}
+	</head>
+	<body>
+		{% include "partials/carousel.html" %}
+		<div class="container marketing">
+			<!-- Specific areas of interest -->
+			<div class="row">
+				<div class="col-lg-4">
+					<img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="140" height="140">
+					<h4><br>Your Score: </h4><br>
+					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-lg-4">
+					<img class="rounded-circle" src="/static/images/diet.png" alt="diet" width="140" height="140">
+					<h4><br>Your Score: </h4><br>
+					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-lg-4">
+					<img class="rounded-circle" src="/static/images/energy.png" alt="Energy" width="140" height="140">
+					<h4><br>Your Score: </h4><br>
+					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-lg-4">
+					<img class="rounded-circle" src="/static/images/wardrobe.png" alt="wardrobe" width="140" height="140">
+					<h4><br>Your Score: </h4><br>
+					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-lg-4">
+					<img class="rounded-circle" src="/static/images/recycling.png" alt="Recycling" width="140" height="140">
+					<h4><br>Your Score: </h4><br>
+					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-lg-4">
+					<img class="rounded-circle" src="/static/images/water.png" alt="water" width="140" height="140">
+					<h4><br>Your Score: </h4><br>
+					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+				</div>
 
-{% block body %}
-  {% include "partials/carousel.html" %}
-	<div class="container marketing">
-		<!-- Specific areas of interest -->
-		<div class="row">
-			<div class="col-lg-4">
-				<img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="140" height="140">
-				<h4><br>Your Score: </h4><br>
-				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
 			</div>
-			<div class="col-lg-4">
-				<img class="rounded-circle" src="/static/images/diet.png" alt="diet" width="140" height="140">
-				<h4><br>Your Score: </h4><br>
-				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-			</div>
-			<div class="col-lg-4">
-				<img class="rounded-circle" src="/static/images/energy.png" alt="Energy" width="140" height="140">
-				<h4><br>Your Score: </h4><br>
-				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-			</div>
-			<div class="col-lg-4">
-				<img class="rounded-circle" src="/static/images/wardrobe.png" alt="wardrobe" width="140" height="140">
-				<h4><br>Your Score: </h4><br>
-				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-			</div>
-			<div class="col-lg-4">
-				<img class="rounded-circle" src="/static/images/recycling.png" alt="Recycling" width="140" height="140">
-				<h4><br>Your Score: </h4><br>
-				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-			</div>
-			<div class="col-lg-4">
-				<img class="rounded-circle" src="/static/images/water.png" alt="water" width="140" height="140">
-				<h4><br>Your Score: </h4><br>
-				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-			</div>
-
 		</div>
-
-	</div>
-
-{% endblock %}
+		
+		{% include "partials/include js.html" %}
+	</body>
+</html>

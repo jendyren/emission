@@ -1,28 +1,14 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+	<head>
+		{% include "partials/header.html" %}
+		<link rel="stylesheet" href="/static/styles/profile.css">
+		{% include "partials/full navbar.html" %}
+	</head>
+	<body>
 
-{% block nav_items %}
-<li class="nav-item">
-	<a class="nav-link" href="/dashboard">Dashboard</a>
-</li>
-<li class="nav-item">
-	<a class="nav-link" href="/leaderboard">Leaderboard</a>
-</li>
-<li class="nav-item">
-	<a class="nav-link" href="/profile">Profile</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="/information">Information</a>
-</li>
-<li class="nav-item">
-	<a class="nav-link active" href="/settings">Settings</a>
-</li>
-<li class="nav-item">
-	<a class="nav-link" href="/logout">Log Out</a>
-</li>
-{% endblock %}
+		<h2> Settings </h2>
+	{% include "partials/include js.html" %}
+	</body>
 
-
-{% block body %}
-  <h2> Settings </h2>
-
-{% endblock %}
+</html>

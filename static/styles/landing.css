@@ -1,13 +1,24 @@
 
+.about{
+  margin-left: 10%;
+  margin-right:10%;
+}
+.about img{
+  width: 25%;
+  margin: 5%;
+}
 .landing-img-wrapper img {
 	width:100%;
+}
+.landing-img-wrapper {
+	margin-top:-4%;
 }
 .landing-text-wrapper {
 	padding:20px;
 	padding-left: 100px;
 }
 .landing-text-wrapper h1 {
-	margin-top: 10%;
+	margin-top: 15%;
 	padding-bottom:25px;
 }
 
@@ -20,7 +31,7 @@ h1 {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   grid-gap: 10px;
   padding: 10px;
 }
@@ -28,6 +39,11 @@ h1 {
 .grid-container > div {
   text-align: center;
   padding: 10px 0;
+}
+
+.grid-item {
+  font-size: 30px;
+  text-align: center;
 }
 
 .team{
@@ -70,4 +86,14 @@ h1 {
 .card{
   height: 590px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+
+@media screen and (max-width: 800px){
+  h1 {
+	text-transform: none;
+	font-size: 2.5rem;
+	font-weight:700;
+	color: #333;
+  }
 }

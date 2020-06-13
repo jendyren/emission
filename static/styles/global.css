@@ -1,5 +1,5 @@
 body {
- font-family: 'Lora', serif;
+ font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -14,6 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
 	padding:20px !important;
 	background: white;
+	transition: 0.2s all ease;
 }
 .nav-link {
 	font-family: 'Montserrat', sans-serif;
@@ -29,4 +30,8 @@ h1, h2, h3, h4, h5, h6 {
 .active {
 	color: #6EB097 !important;
 	border-bottom: 2px solid #6EB097;
+}
+
+.hide {
+	display: none;
 }

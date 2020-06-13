@@ -8,6 +8,27 @@
 	<body>
 
 		<h2> Profile </h2>
+
+    
+    <div class="slidercontainer">
+        <input type="range" min="1" max="10" value = "5" class="slider" id="myRange">
+     </div>
+
+    <select name="area" id="select_type" onchange="flipDescription()">
+        <option value="transit"> Transit </option>
+        <option value="diet"> Diet </option>
+        <option value="energy"> Energy </option>
+        <option value="wardrobe"> Wardrobe </option>
+        <option value="recycling"> Recycling </option>
+        <option value="water"> Water </option>
+    </select>
+
+    <div id="descriptions">
+    
+
+
+		{% include "partials/include js.html" %}
+    <script src="scripts/profile.js"> </script>
 	</body>
 
 </html>
