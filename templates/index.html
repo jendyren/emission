@@ -118,105 +118,29 @@
 
             <!-- Daily Diet Survey -->
             <form id="diet-survey" class = "description hide" method="POST" target="dummyframe">
-              <h5> What did you eat for breakfast (calories)? </h5>
+              <h5> What did you eat for today (calories)? </h5>
               <p>Meat/Fish/Eggs</p>
               <div class="slidercontainer">
-                <input name="diet-m_bfast" type="range" min="0" max="10000" value = "475" class="slider" id="m_bfast_slider">
+                <input name="diet-m" type="range" min="0" max="2000" value = "100" class="slider" id="m_bfast_slider">
               </div>
-              <label class="value_label" id="m_bfast_val"> 475 </label>
+              <label class="value_label" id="m_bfast_val"> 100 </label>
 
               <p>Grains/Baked Goods</p>
               <div class="slidercontainer">
-                <input name="diet-g_bfast" type="range" min="0" max="10000" value = "590" class="slider" id="g_bfast_slider">
+                <input name="diet-g" type="range" min="0" max="2000" value = "590" class="slider" id="g_bfast_slider">
               </div><label class="value_label" id="g_bfast_val"> 590 </label>
 
               <p>Dairy</p>
               <div class="slidercontainer">
-                <input name="diet-d_bfast" type="range" min="0" max="10000" value = "250" class="slider" id="d_bfast_slider">
+                <input name="diet-d" type="range" min="0" max="2000" value = "250" class="slider" id="d_bfast_slider">
               </div>
               <label class="value_label" id="d_bfast_val"> 250 </label>
 
               <p>Fruits/Vegetables</p>
               <div class="slidercontainer">
-                <input name="diet-f_bfast" type="range" min="0" max="10000" value = "240" class="slider" id="f_bfast_slider">
+                <input name="diet-f" type="range" min="0" max="2000" value = "240" class="slider" id="f_bfast_slider">
               </div>
               <label class="value_label" id="f_bfast_val"> 240 </label>
-
-              <br>
-              <h5> What did you eat for lunch (calories)? </h5>
-              <p>Meat/Fish/Eggs</p>
-              <div class="slidercontainer">
-                <input name="diet-m_lunch" type="range" min="0" max="10000" value = "475" class="slider" id="m_lunch_slider">
-              </div>
-              <label class="value_label" id="m_lunch_val"> 475 </label>
-  <!-- wait guys this needs to have a structure for the db: category-option -->
-  <!-- so this would be "diet-food" -->
-              <p>Grains/Baked Goods</p>
-              <div class="slidercontainer">
-                <input name="diet-g_lunch" type="range" min="0" max="10000" value = "590" class="slider" id="g_lunch_slider">
-              </div><label class="value_label" id="g_lunch_val"> 590 </label>
-
-              <p>Dairy</p>
-              <div class="slidercontainer">
-                <input name="diet-d_lunch" type="range" min="0" max="10000" value = "250" class="slider" id="d_lunch_slider">
-              </div>
-              <label class="value_label" id="d_lunch_val"> 250 </label>
-
-              <p>Fruits/Vegetables</p>
-              <div class="slidercontainer">
-                <input name="diet-f_lunch" type="range" min="0" max="10000" value = "240" class="slider" id="f_lunch_slider">
-              </div>
-              <label class="value_label" id="f_lunch_val"> 240 </label>
-
-              <br>
-              <h5> What did you eat for dinner (calories)? </h5>
-              <p>Meat/Fish/Eggs</p>
-              <div class="slidercontainer">
-                <input name="diet-m_dinner" type="range" min="0" max="10000" value = "475" class="slider" id="m_dinner_slider">
-              </div>
-              <label class="value_label" id="m_dinner_val"> 475 </label>
-
-              <p>Grains/Baked Goods</p>
-              <div class="slidercontainer">
-                <input name="diet-g_dinner" type="range" min="0" max="10000" value = "590" class="slider" id="g_dinner_slider">
-              </div><label class="value_label" id="g_dinner_val"> 590 </label>
-
-              <p>Dairy</p>
-              <div class="slidercontainer">
-                <input name="diet-d_dinner" type="range" min="0" max="10000" value = "250" class="slider" id="d_dinner_slider">
-              </div>
-              <label class="value_label" id="d_dinner_val"> 250 </label>
-
-              <p>Fruits/Vegetables</p>
-              <div class="slidercontainer">
-                <input name="diet-f_dinner" type="range" min="0" max="10000" value = "240" class="slider" id="f_dinner_slider">
-              </div>
-              <label class="value_label" id="f_dinner_val"> 240 </label>
-              
-              <br>
-              <h5> What did you eat for snacks? </h5>
-              <p>Meat/Fish/Eggs</p>
-              <div class="slidercontainer">
-                <input name="diet-m_snack" type="range" min="0" max="10000" value = "475" class="slider" id="m_snack_slider">
-              </div>
-              <label class="value_label" id="m_snack_val"> 475 </label>
-
-              <p>Grains/Baked Goods</p>
-              <div class="slidercontainer">
-                <input name="diet-g_snack" type="range" min="0" max="10000" value = "590" class="slider" id="g_snack_slider">
-              </div><label class="value_label" id="g_snack_val"> 590 </label>
-
-              <p>Dairy</p>
-              <div class="slidercontainer">
-                <input name="diet-d_snack" type="range" min="0" max="10000" value = "250" class="slider" id="d_snack_slider">
-              </div>
-              <label class="value_label" id="d_snack_val"> 250 </label>
-
-              <p>Fruits/Vegetables</p>
-              <div class="slidercontainer">
-                <input name="diet-f_snack" type="range" min="0" max="10000" value = "240" class="slider" id="f_snack_slider">
-              </div>
-              <label class="value_label" id="f_snack_val"> 240 </label>
               <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
               
@@ -290,10 +214,47 @@
 
             <!-- General Recyling Survey -->
             <form id="recycling-survey" class = "description hide" method="POST" target="dummyframe">
-              <p> QUESTION? </p>
-              <div class="slidercontainer">
-                <input name="recycle-recycle" type="range" min="0" max="50" value = "25" class="slider" id="recycle_slider">
+              
+              <div id="wrapper">
+                <h5>Do you recycle plastic?</h5>
+                <p>
+                  <input type="radio" name="plastic_yes_no" checked> Yes</input>
+                </p>
+                <p>
+                  <input type="radio" name="plastic_yes_no"> No</input>
+                </p>
               </div>
+              
+              <div id="wrapper">
+                <h5>Do you recycle bottles and cans?</h5>
+                <p>
+                  <input type="radio" name="cans_yes_no" checked> Yes</input>
+                </p>
+                <p>
+                  <input type="radio" name="cans_yes_no"> No</input>
+                </p>
+              </div>
+              
+              <div id="wrapper">
+                <h5>Do you donate or re-use old clothing, sheets, blankets and towels?</h5>
+                <p>
+                  <input type="radio" name="clothing_yes_no" checked> Yes</input>
+                </p>
+                <p>
+                  <input type="radio" name="clothing_yes_no"> No</input>
+                </p>
+              </div>
+
+              <div id="wrapper">
+                <h5>Do you recycle paper?</h5>
+                <p>
+                  <input type="radio" name="paper_yes_no" checked> Yes</input>
+                </p>
+                <p>
+                  <input type="radio" name="paper_yes_no"> No</input>
+                </p>
+              </div>
+              <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
 
@@ -338,10 +299,12 @@
               <label class="value_label" id="laundry_load_val"> 3 </label>
               
               <h5> Do you water a garden? </h5>
-              <input type="checkbox" name="garden_yes" value="hot">
-              <label class="checkbox_label" for="garden_yes"> Yes </label><br>
-              <input type="checkbox" name="garden_no" value="cold">
-              <label class="checkbox_label" for="garden_no"> No </label><br>
+              <p>
+                <input type="radio" name="cans_yes_no" checked> Yes</input>
+              </p>
+              <p>
+                <input type="radio" name="cans_yes_no"> No</input>
+              </p>
 
               <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
@@ -354,7 +317,7 @@
 
 		<div class='spread'>
 			<center>
-				<h3 id="time_of_day">Good Day!</h3>
+				<h3>Hey, {{username}}!</h3> <h3 id="time_of_day">Good Day!</h3>
 				<h5>It's a great day to take care of our Earth!</h5>
 			</center>
 
@@ -372,32 +335,32 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="140" height="140">
-					<h4><br>Your Score: </h4><br>
+					<h4><br>Your Score: </h4> <h4 id="transit_score"> </h4><br>
 					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/diet.png" alt="diet" width="140" height="140">
-					<h4><br>Your Score: </h4><br>
+					<h4><br>Your Score: </h4> <h4 id="diet_score"> </h4><br>
 					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/energy.png" alt="Energy" width="140" height="140">
-					<h4><br>Your Score: </h4><br>
+					<h4><br>Your Score: </h4> <h4 id="energy_score"> </h4><br>
 					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/wardrobe.png" alt="wardrobe" width="140" height="140">
-					<h4><br>Your Score: </h4><br>
+					<h4><br>Your Score: </h4> <h4 id="wardrobe_score"> </h4> <br>
 					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/recycling.png" alt="Recycling" width="140" height="140">
-					<h4><br>Your Score: </h4><br>
+					<h4><br>Your Score: </h4> <h4 id="recycling_score"> </h4> <br>
 					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/water.png" alt="water" width="140" height="140">
-					<h4><br>Your Score: </h4><br>
+					<h4><br>Your Score: </h4> <h4 id="water_score"> </h4> <br>
 					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
 				</div>
 

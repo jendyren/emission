@@ -83,19 +83,72 @@ fetch('/get-info', {
   
   calculate_transit_co2(data.transit, data.dayTransit);
   calculate_energy_co2(data.energy);
+  calculate_diet_co2(data.diet);
+  calculate_water_co2();
 });
 
-function calculate_transit_co2(overall_transit, day_transit){
-  if (overall_transit.mpg != 0){
-    let driving_co2 = day_transit.mileDrive / overall_transit.mpg * 1940 / 95;
+function calculate_transit_co2(transit, dayTransit){
+  if (transit.mpg != 0){
+    let driving_co2 = dayTransit.mileDrive / transit.mpg * 1940 / 95;
   }
-  
-
+  let flying_co2 = transit.flight_time * transit.num_flown * 292353 * .0022;  
 }
-
 
 function calculate_energy_co2(energy){
   let daily_energy_to_co2 = ((energy.call_dur * 23.5) + (energy.txt_dur * .057) + (energy.vid_dur * .06 * .2) + (energy.searches * .0036) + (energy.email_sent * .004)) * .001;
-  let gen_energy_to_co2;
+  let gen_energy_to_co2 = energy.kw * 16.44;
 }
 
+function calculate_diet_co2(diet){
+  var meat = 0;
+  var grain = 0;
+  var dairy = 0;
+  var fruit = 0;
+
+  for (element in diet){
+    if (element.includes("m_")){
+      meat += (diet[element] * 3 / 475);
+    }
+    else if (element.includes("g_")){
+      grain += (diet[element] / 586);
+    }
+    else if (element.includes("d_")){
+      dairy += (diet[element] / 251);
+    }
+    else if (element.includes("f_")){
+      fruit += (diet[element] / 237);
+    }
+  }
+  
+  var total = (meat + grain + dairy + fruit);
+  console.log(total)
+  //475 calories daily of meat/fish/eggs is equal to 3 tons of CO2 annually 
+  //586 calories daily of grains/baked goods is equal to  1 ton of CO2 annually
+  //251 calories daily of dairy is equal to 1 ton of CO2 annually
+  //237 calories daily of fruit/vegetables is equal to 1 ton of CO2 annually
+  
+  
+  document.getElementById("diet_score").innerHTML = get_score(total, 0.28);
+}
+
+function calculate_water_co2(water){
+
+}
+
+function get_score(total, percentage){
+  if (total/percentage <= 2){
+    return "A";
+  }
+  else if ((total/percentage > 2) &&  (total/percentage <= 6)){
+    return "B";
+  }
+  else if ((total/percentage > 6) &&  (total/percentage <= 10)){
+    return "C";
+  }
+  else if ((total/percentage > 10) &&  (total/percentage <= 14)){
+    return "D";
+  }
+  else if (total/percentage > 14){
+    return "F";
+  }
+}
