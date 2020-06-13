@@ -1,23 +1,8 @@
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
-}
-
 #select_type {
 	font-family: 'Montserrat', sans-serif;
 	width:50%;
 	margin-left:auto;
 	margin-right:auto;
-}
-
-/* The slider itself */
-.slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 30%;
-  height: 25px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
 }
 
 .grid-container {
@@ -46,37 +31,4 @@
 .area-description {
   font-size: 10px;
   text-align: left;
-}
-
-.slider:hover {
-  opacity: 1; 
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px; 
-  height: 25px;
-  background: rgb(126, 206, 129);
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: rgb(126, 206, 129);
-  cursor: pointer;
-}
-
-.description {
-	margin-top: 2em;
-	font-size: 2vmin;
-}
-
-.submit-button{
-  font-family: 'Montserrat', sans-serif;
-}
-
-.value_label{
-  font-family: 'Montserrat', sans-serif;
 }

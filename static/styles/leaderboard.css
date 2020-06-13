@@ -73,3 +73,40 @@ input:checked + .slider:before {
   font-size: 10px;
   text-align: center;
 }
+
+table {
+	border: 2px solid black;
+}
+table tr{
+	border-bottom: 2px solid black;
+}
+table tr td:first-child{
+	border-right: 2px solid black;
+	width: 2em;
+	padding: 0.5em
+}
+table tr td{
+	padding: 0.5em;
+	/* font-size: 2em;
+	display: inline-flex; 
+	justify-content: center;
+	align-items: center;*/
+	color: black;
+	text-align: center
+}
+td p{
+	min-width:10px;
+	font-size: 1.7em;
+	/* display: inline-flex; 
+	justify-content: center;
+	align-items: center; */
+	/* text-align: center; */
+	color: black;
+
+}
+
+.tables {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}

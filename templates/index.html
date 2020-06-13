@@ -5,21 +5,330 @@
 		{% include "partials/full navbar.html" %}
 	</head>
 	<body id="dashboard-page">
-    
-    <div class = "greeting">
-      <div class = "grid-container">
-        <div class = "grid-item">
-          <h3 id="time_of_day">Good Day!</h3>
-          <h5>It's a great day to take care of our Earth!</h5>
-        </div>
-        <div class = "grid-item">
-          <h3 id="sustainability_score">Sustainability Score: </h3>
-        </div>
+		<!-- Notifications -->
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+				<div class="alert alert-info" role="alert">
+					{{ message }}
+				</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"> </h5>
+            <select class="form-control form-control-lg" name="select-menu" id="select_type" onchange="flipDescription()">
+              <option value="general-transit"> Overview </option>
+              <option value="daily-transit"> Daily Transit </option>
+              <option value="diet"> Diet </option>
+              <option value="energy"> Energy </option>
+              <option value="wardrobe"> Wardrobe </option>
+              <option value="recycling"> Recycling </option>
+              <option value="water"> Water </option>
+            </select>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <center>
+      <form id="general-transit-survey" class ="description" method="POST" target="dummyframe">
+              <h5> Have many times have you flown this year? </h5>
+              <div class="slidercontainer">
+                <input name="transit-num_flown" type="range" min="0" max="15" value = "7" class="slider" id="num_flown_slider">
+              </div>
+              <label class="value_label" id="num_flown_val"> 7 </label>
 
+              <h5> Average flight time (hours)? </h5>
+              <div class="slidercontainer">
+                <input name="transit-flight_time" type="range" min="0" max="18" value = "9" class="slider" id="flight_time_slider">
+              </div>
+              <label class="value_label" id="flight_time_val"> 9 </label>
+
+              <h5> How many miles per gallon does your car get? </h5>
+              <div class="slidercontainer">
+                  <input name="transit-mpg" type="range" min="" max="60" value = "30" class="slider" id="mpg_slider">
+              </div>
+              <label class="value_label" id="mpg_val"> 30 </label>
+
+              <h5> How many kW of energy did you use this month? </h5>
+              <div class="slidercontainer">
+                <input name="energy-energy" type="range" min="1" max="50" value = "25" class="slider" id='energy-slider'>
+              </div>
+
+              <h5> How often do you purchase a new phone? </h5>
+              <div class="slidercontainer">
+                <input name="energy-energy" type="range" min="1" max="50" value = "25" class="slider" id=''>
+              </div>
+
+              <h5> How often do you buy clothes? </h5>
+                <input type="checkbox" name="clothes-weekly" value="weekly">
+                <label class="checkbox_label" for="weekly"> Weekly </label><br>
+                <input type="checkbox" name="clothes-monthly" value="monthly">
+                <label class="checkbox_label" for=""> Month </label><br>
+                <input type="checkbox" name="clothes-yearly" value="yearly">
+                <label class="checkbox_label" for=""> Yearly</label><br>
+
+              <h5> How many items do you buy? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-wardrobe" type="range" min="1" max="50" value = "25" class="slider" id='wardrobe-slider'>
+              </div>
+
+
+              <h5> Where do you buy new clothes/shoes? </h5>
+                <input type="checkbox" name="newClothes-second_hand" value="second_hand">
+                <label class="checkbox_label" for="second_hand"> Second-Hand </label><br>
+                <input type="checkbox" name="newClothes-brand_new" value="brand_new">
+                <label class="checkbox_label" for="brand_new"> Brand New </label><br>
+
+              
+              <br>
+            <input type="submit" class="btn btn-primary" value="Save changes"></input>
+
+            </form>
+            
+
+            <!-- Daily Transit Survey -->
+            <form id="daily-transit-survey" class = "description hide" method="POST" target="dummyframe">
+              <h5> How many miles do you drive today? </h5>
+              <div class="slidercontainer">
+                <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="miles_slider">
+              </div>
+
+              <h5> Did you carpool? </h5>
+              <div class="slidercontainer">
+                <input name="dayTransit-carpool" type="range" min="0" max="650" value = "30" class="slider" id="carpool_slider">
+              </div>
+
+              <h5> Did you use public transportation? </h5>
+              <div class="slidercontainer">
+                <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="miles_val">
+              </div>
+
+              <label class="value_label" id=""> 30 </label>
+              <br>
+            <input type="submit" class="btn btn-primary" value="Save changes"></input>
+              
+            </form>
+
+            <!-- Daily Diet Survey -->
+            <form id="diet-survey" class = "description hide" method="POST" target="dummyframe">
+              <h5> What did you eat for breakfast (calories)? </h5><br>
+
+              <p>Meat/Fish/Eggs</p>
+              <div class="slidercontainer">
+                <input name="diet-m_bfast" type="range" min="0" max="10000" value = "475" class="slider" id="m_bfast_slider">
+              </div>
+              <label class="value_label" id="m_bfast_val"> 475 </label>
+
+              <p>Grains/Baked Goods</p>
+              <div class="slidercontainer">
+                <input name="diet-g_bfast" type="range" min="0" max="10000" value = "590" class="slider" id="g_bfast_slider">
+              </div><label class="value_label" id="g_bfast_val"> 590 </label>
+
+              <p>Dairy</p>
+              <div class="slidercontainer">
+                <input name="diet-d_bfast" type="range" min="0" max="10000" value = "250" class="slider" id="d_bfast_slider">
+              </div>
+              <label class="value_label" id="d_bfast_val"> 250 </label>
+
+              <p>Fruits/Vegetables</p>
+              <div class="slidercontainer">
+                <input name="diet-f_bfast" type="range" min="0" max="10000" value = "240" class="slider" id="f_bfast_slider">
+              </div>
+              <label class="value_label" id="f_bfast_val"> 240 </label>
+
+
+              <h5> What did you eat for lunch (calories)? </h5>
+              <p>Meat/Fish/Eggs</p>
+              <div class="slidercontainer">
+                <input name="diet-m_lunch" type="range" min="0" max="10000" value = "475" class="slider" id="m_lunch_slider">
+              </div>
+              <label class="value_label" id="m_lunch_val"> 475 </label>
+  <!-- wait guys this needs to have a structure for the db: category-option -->
+  <!-- so this would be "diet-food" -->
+              <p>Grains/Baked Goods</p>
+              <div class="slidercontainer">
+                <input name="diet-g_lunch" type="range" min="0" max="10000" value = "590" class="slider" id="g_lunch_slider">
+              </div><label class="value_label" id="g_lunch_val"> 590 </label>
+
+              <p>Dairy</p>
+              <div class="slidercontainer">
+                <input name="diet-d_lunch" type="range" min="0" max="10000" value = "250" class="slider" id="d_lunch_slider">
+              </div>
+              <label class="value_label" id="d_lunch_val"> 250 </label>
+
+              <p>Fruits/Vegetables</p>
+              <div class="slidercontainer">
+                <input name="diet-f_lunch" type="range" min="0" max="10000" value = "240" class="slider" id="f_lunch_slider">
+              </div>
+              <label class="value_label" id="f_lunch_val"> 240 </label>
+
+              <h5> What did you eat for dinner (calories)? </h5>
+              <p>Meat/Fish/Eggs</p>
+              <div class="slidercontainer">
+                <input name="diet-m_dinner" type="range" min="0" max="10000" value = "475" class="slider" id="m_dinner_slider">
+              </div>
+              <label class="value_label" id="m_dinner_val"> 475 </label>
+
+              <p>Grains/Baked Goods</p>
+              <div class="slidercontainer">
+                <input name="diet-g_dinner" type="range" min="0" max="10000" value = "590" class="slider" id="g_dinner_slider">
+              </div><label class="value_label" id="g_dinner_val"> 590 </label>
+
+              <p>Dairy</p>
+              <div class="slidercontainer">
+                <input name="diet-d_dinner" type="range" min="0" max="10000" value = "250" class="slider" id="d_dinner_slider">
+              </div>
+              <label class="value_label" id="d_dinner_val"> 250 </label>
+
+              <p>Fruits/Vegetables</p>
+              <div class="slidercontainer">
+                <input name="diet-f_dinner" type="range" min="0" max="10000" value = "240" class="slider" id="f_dinner_slider">
+              </div>
+              <label class="value_label" id="f_dinner_val"> 240 </label>
+              
+              <h5> What did you eat for snacks? </h5>
+              <p>Meat/Fish/Eggs</p>
+              <div class="slidercontainer">
+                <input name="diet-m_snack" type="range" min="0" max="10000" value = "475" class="slider" id="m_snack_slider">
+              </div>
+              <label class="value_label" id="m_snack_val"> 475 </label>
+
+              <p>Grains/Baked Goods</p>
+              <div class="slidercontainer">
+                <input name="diet-g_snack" type="range" min="0" max="10000" value = "590" class="slider" id="g_snack_slider">
+              </div><label class="value_label" id="g_snack_val"> 590 </label>
+
+              <p>Dairy</p>
+              <div class="slidercontainer">
+                <input name="diet-d_snack" type="range" min="0" max="10000" value = "250" class="slider" id="d_snack_slider">
+              </div>
+              <label class="value_label" id="d_snack_val"> 250 </label>
+
+              <p>Fruits/Vegetables</p>
+              <div class="slidercontainer">
+                <input name="diet-f_snack" type="range" min="0" max="10000" value = "240" class="slider" id="f_snack_slider">
+              </div>
+              <label class="value_label" id="f_snack_val"> 240 </label>
+              <br>
+              <input type="submit" class="btn btn-primary" value="Save changes"></input>
+              
+            </form>
+
+            <!-- General Energy Survey -->
+            <form id="energy-survey" class = "description hide" method="POST" target="dummyframe">
+              <h5> How long did you call today (minutes)? </h5>
+              <div class="slidercontainer">
+                <input name="energy-call_dur" type="range" min="0" max="300" value = "5" class="slider" id="call_dur_slider">
+              </div>
+              <label class="value_label" id="call_dur_val"> 5 </label>
+
+              <h5> How long did you text today (minutes)? </h5>
+              <div class="slidercontainer">
+                <input name="energy-txt_dur" type="range" min="0" max="150" value = "30" class="slider" id="txt_dur_slider">
+              </div>
+              <label class="value_label" id="txt_dur_val"> 30 </label>
+
+              <h5> How long did you watch internet-streamed videos today (hours)? </h5>
+              <div class="slidercontainer">
+                <input name="energyvid_dur" type="range" min="0" max="24" value = "6" class="slider" id="vid_dur_slider">
+              </div>
+              <label class="value_label" id="vid_dur_val"> 6 </label>
+
+              <h5> How many emails did you send today? </h5>
+              <div class="slidercontainer">
+                <input name="energy-email_sent" type="range" min="0" max="500" value = "120" class="slider" id="email_sent_slider">
+              </div>
+              <label class="value_label" id="email_sent_val"> 120 </label>
+
+              <h5> How many Google searches did you make today? </h5>
+              <div class="slidercontainer">
+                <input name="energy-searches" type="range" min="0" max="300" value = "25" class="slider" id="email_searches_slider">
+              </div>
+              <label class="value_label" id="searches_val"> 25 </label>
+              <br>
+              <input type="submit" class="btn btn-primary" value="Save changes"></input>
+              
+            </form>
+
+            <!-- General Wardrobe Survey -->
+            <form id="wardrobe-survey" class = "description hide" method="POST" target="dummyframe">
+              <h5> How many loads of laundry do you do a week? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-laundry_loads" type="range" min="1" max="50" value = "25" class="slider" id='laundry_loads-slider'>
+              </div>
+              <label class="value_label" id="laundry_loads_val"> 25 </label>
+
+              <h5> Do you wash your laundry with cold or hot water? </h5>
+              <input type="checkbox" name="wardrobe-wash_temp_hot" value="hot">
+              <label class="checkbox_label" for=""> Hot </label><br>
+              <input type="checkbox" name="wardrobe-wash_temp_cold" value="cold">
+              <label class="checkbox_label" for=""> Cold </label><br>
+
+
+              <h5> How do you dry your clothes? </h5>
+              <input type="checkbox" name="wardrobe-dry_meth_dryer" value="dryer">
+              <label class="checkbox_label" for=""> Laundry Dryer </label><br>
+              <input type="checkbox" name="wardrobe-dry_meth_line" value="line">
+              <label class="checkbox_label" for=""> Air Dry </label><br>
+
+              <h5> How often do you dry clean your clothes in a month? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-dry_clean" type="range" min="1" max="30" value = "25" class="slider" id="dry_clean-slider">
+              </div>
+              <label class="value_label" id="searches_val"> 25 </label>
+
+              <input type="submit" class="btn btn-primary" value="Save changes"></input>
+            </form>
+
+            <!-- General Recyling Survey -->
+            <form id="recycling-survey" class = "description hide" method="POST" target="dummyframe">
+              <p> QUESTION? </p>
+              <div class="slidercontainer">
+                <input name="recycle-recycle" type="range" min="1" max="50" value = "25" class="slider" id="recycle-slider">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Save changes"></input>
+            </form>
+
+
+            <!-- Daily Water Survey -->
+            <form id="water-survey" class = "description hide" method="POST" target="dummyframe">
+              
+              <p> How long did you shower? </p>
+              <div class="slidercontainer">
+                <input name="water-water_length" type="range" min="1" max="50" value = "25" class="slider" id="water_length-slider">
+              </div>
+              
+              <p> Hot or cold? </p>
+              <div class="slidercontainer">
+                <input name="water-water_temp" type="range" min="1" max="50" value = "25" class="slider" id="water_temp-slider">
+              </div>
+            </center>             
+          </div>
+        </div>
       </div>
-    </div>
-    
-		{% include "partials/carousel.html" %}
+		</div>
+
+		<div class='spread'>
+			<center>
+				<h3 id="time_of_day">Good Day!</h3>
+				<h5>It's a great day to take care of our Earth!</h5>
+			</center>
+
+			<h3 id="sustainability_score">Sustainability Score: {{score}}</h3>
+
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Input your daily impact </button>
+			
+		</div>
+
+    {% include "partials/carousel.html" %}
+
 		<div class="container marketing">
 			<!-- Specific areas of interest -->
 			<div class="row">

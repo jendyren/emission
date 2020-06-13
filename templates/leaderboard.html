@@ -9,24 +9,36 @@
 		<center>
 			<h2> Leaderboard </h2>
       <p> Use the toggle to see how you compare</p>
-		</center>
+		
 
       <label class="switch" onchange="toggle_leaderboards()">
         <input type="checkbox" checked>
         <span class="slider round"></span>
       </label>
 
-      <div id="overall"> OVERALL 
-        <li> uno </li>
-        <li> dos </li>
-        <li> tres </li>
-      </div>
-      <div id="just_friends" class="hidden"> JUST YA FRIENDOS 
-        <li> uno 1</li>
-        <li> dos 2</li>
-        <li> tres 3</li>
-      </div>
-      <center>
+      <h4 id="overall"> OVERALL </h4>
+      <h4 id="just_friends" class="hidden"> JUST YA FRIENDOS </h4>
+    </center>
+		<br>
+
+		<div class='tables'>
+			<div>
+				<h3><u>Global</u></h3>
+				<table id="global"></table>
+			</div>
+
+			<div>
+				<h3><u>Around You</u></h3>
+				<table id="around"></table>
+			</div>
+
+			<div>
+				<h3><u>Friends</u></h3>
+				<table id="friends"></table>
+			</div>
+		</div>
+
+			
 
       <!--
 			<img src="https://cdn.discordapp.com/attachments/720100330993483796/721160186739556402/trophy.png" alt="trophy" width="20%">

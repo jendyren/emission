@@ -1,3 +1,5 @@
+/* MOVE TO DASHBOARD */
+
 function flipDescription(){ 
 	let select = document.getElementById('select_type');
 	document.getElementById('general-transit-survey').classList.add('hide');
@@ -11,7 +13,6 @@ function flipDescription(){
 }
 
 var names = [];
-
 var sliders = document.getElementsByClassName('slider');
 for (let el of sliders){
 	let id = el.id;

@@ -1,5 +1,5 @@
 body {
- font-family: 'Lora', serif;
+ font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,67 +42,22 @@ a:hover {
   padding: 10px 0;
 }
 
-/* go to global.css for navbar */
-/* .navbar{
-  box-shadow: 2px 4px 10px 2px rgb(211, 211, 211);
-  
-}
-
-.navbar-brand {
-  font-family: 'Megrim', cursive;
-  font-size:30px;
-} */
-
-/* will delete if i mess up lol*/
-/* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
-
 body {
   margin-top: 95px;
   padding-bottom: 3rem;
   color: #5a5a5a;
 }
 
-/* NAVBAR
----------------------------------------*/
-/* .navbar {
-	padding:20px !important;
-	background: white;
-}
-.nav-link {
-	font-family: 'Montserrat', sans-serif;
-	font-weight:800;
-	color:#333 !important;
-	border-bottom: 2px solid transparent;
-	transition: all 0.2s ease;
-}
-.nav-link:hover {
-	border-bottom: 2px solid #6EB097;
-	transition: all 0.2s ease;
-}
-.active {
-	color: #6EB097 !important;
-	border-bottom: 2px solid #6EB097;
-} */
-
-
-
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
 	padding-top: 0px;
 }
-/* Since positioning the image, we need to help out the caption */
+
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
 }
 
-/* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
   background-color: #eee;
@@ -115,10 +70,6 @@ body {
   height: 32rem;
 }
 
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
@@ -131,13 +82,7 @@ body {
   margin-left: .75rem;
 }
 
-
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
 @media (min-width: 40em) {
-  /* Bump up size of carousel content */
   .carousel-caption p {
     margin-bottom: 1.25rem;
     font-size: 1.25rem;
@@ -151,9 +96,6 @@ body {
   }
 }
 
-/*
-BUTTONS
-----------------------*/
 .btn-primary {
 	background: linear-gradient(90deg, rgba(208,255,209,1) 0%, rgba(169,255,249,1) 100%);
 	border-radius: 20px;
@@ -188,3 +130,82 @@ BUTTONS
 	transition:all 0.2s ease;
 }
 
+.modal {
+	position: absolute;
+	left: 0;
+	top: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+	height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-contents {
+  background-color: #fff;
+  padding: 2rem 4rem;
+}
+
+.modal-closebar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.spread {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+	align-items: center;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+#select_type {
+	font-family: 'Montserrat', sans-serif;
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+}
+
+.slider:hover {
+  opacity: 1; 
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px; 
+  height: 25px;
+  background: rgb(126, 206, 129);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: rgb(126, 206, 129);
+  cursor: pointer;
+}
+
+.value_label {
+  font-family: 'Montserrat', sans-serif;
+  text-align:center;
+}
+
+.checkbox_label {
+  font-family: 'Montserrat', sans-serif;
+}

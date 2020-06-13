@@ -16,6 +16,8 @@ login_manager.init_app(app)
 class User(flask_login.UserMixin):
   pass
 
+################### LOGIN STUFF
+
 @login_manager.user_loader
 def user_loader(username):
     if not db.checkUser("username", username):
@@ -38,6 +40,8 @@ def request_loader(request):
 		#user.is_authenticated = True; # this line is useless LOL
 		return user
 
+############################ NO CACHE
+
 @app.after_request
 def add_header(r):
 		"""
@@ -49,6 +53,8 @@ def add_header(r):
 		r.headers["Expires"] = "0"
 		r.headers['Cache-Control'] = 'public, max-age=0'
 		return r
+
+############################ ROUTES
 
 @app.route('/')
 def index():
@@ -68,7 +74,7 @@ def login():
 			if (pwrd != request.form["password2"]):
 				flash("Passwords do not match!")
 				return render_template('login.html')
-			if (len(pwrd) <= 6):
+			if (len(pwrd) < 6):
 				flash("Password must be at least 6 characters.")
 				return render_template('login.html')
 		
@@ -111,11 +117,24 @@ The following pages require authentication
 Current user's username is stored in this variable: flask_login.current_user.id
 """
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'POST'])
 @flask_login.login_required
 def dashboard():
-	print('Logged in as: ' + flask_login.current_user.id)
-	return render_template('index.html', username=flask_login.current_user.id)
+	username = flask_login.current_user.id
+	print('Logged in as: ' + username)
+	userid = request.cookies.get('userID')
+
+	score = db.get_data(userid, ['score'])["score"]
+	if request.method == 'POST' and request.form:
+		activities = {}
+		for i in request.form:
+			val = request.form[i]
+			if val.isdigit(): val = int(val)
+			activities['activities.' + i.replace('-', '.')] = val				
+
+		db.updateActivities(userid, activities)
+		flash("Your responses have been saved!")
+	return render_template('index.html', username=username, score=score)
 
 @app.route('/logout')
 @flask_login.login_required
@@ -142,24 +161,25 @@ def chatbot():
 	username = flask_login.current_user.id
 	return render_template('chatbot.html', username=username)
 
-@app.route('/profile', methods=['GET', 'POST'])
+@app.route('/map')
+@flask_login.login_required
+def mapPage():
+	username = flask_login.current_user.id
+	return render_template('map.html', username=username)
+
+@app.route('/profile')
 @flask_login.login_required
 def profile():
-	if request.method == 'POST':
-		if request.form: 
-			userid = request.cookies.get('userID')
-			activities = {}
-			for i in request.form:
-				val = request.form[i]
-				if val.isdigit(): val = int(val)
-				activities['activities.' + i.replace('-', '.')] = val				
-			
-			db.updateActivities(userid, activities)
-			return jsonify({"respose": userid})
-		return ""
-	else:
-		username = flask_login.current_user.id
-		return render_template('profile.html', username=username)
+	
+	
+	username = flask_login.current_user.id
+	return render_template('profile.html', username=username)
+
+@app.route('/information')
+@flask_login.login_required
+def info():
+	username = flask_login.current_user.id
+	return render_template('information.html', username=username)
 
 @app.route('/get-info', methods=['POST'])
 @flask_login.login_required
@@ -172,15 +192,19 @@ def getInfo():
 @app.route('/get-leader', methods=['POST'])
 @flask_login.login_required
 def getLeader():
-	print("getting leader")
 	userid = request.cookies.get('userID')
 	re = db.get_leaderboard(userid)
 	return jsonify(re)
 
-@app.route('/information')
-@flask_login.login_required
-def info():
-	username = flask_login.current_user.id
-	return render_template('information.html', username=username)
+@app.route('/search', methods=['GET', 'POST'])
+def searchNames():
+	if request.method == 'GET':
+		username = flask_login.current_user.id
+		return render_template('search.html', username=username)
+
+	name = request.data()['name']
+	return jsonify({'names': db.search_names(name)})
+
+
 
 app.run(host='0.0.0.0', port=8080, debug=True)

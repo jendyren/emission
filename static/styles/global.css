@@ -31,7 +31,10 @@ h1, h2, h3, h4, h5, h6 {
 #dashboard-page #dashboard-link,
 #leaderboards-page #leaderboards-link,
 #info-page #info-link,
-#profile-page #profile-link {
+#profile-page #profile-link,
+#chatbot-page #chatbot-link,
+#map-page #map-link,
+#search-page #search-link {
 	color: #6EB097 !important;
 	border-bottom: 2px solid #6EB097;
 }

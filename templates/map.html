@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% include "partials/header.html" %}
+    	{% include "partials/full navbar.html" %}
+		<link rel="stylesheet" href="/static/styles/map.css">
+    
+		
+	</head>
+	<body id="map-page">
+		<center>
+			<h2 id="map-title"> Ozone Concentration </h2>
+			<p><small>Click on the button on the top right corner of the map to change between maps.</small></p>
+		</center>
+		
+		<div id="mapid"></div>
+
+		{% include "partials/include js.html" %}
+		<script src="/static/scripts/map.js"></script>
+	</body>
+
+</html>

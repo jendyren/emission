@@ -1,5 +1,6 @@
 import os
 from bson.objectid import ObjectId
+import pymongo
 from pymongo import MongoClient
 mongoPassword = os.getenv('mongoPassword')
 mongoUri = "mongodb+srv://HexHax:" + mongoPassword + "@hackathons-nfrzv.mongodb.net/Emission?retryWrites=true&w=majority"
@@ -16,7 +17,6 @@ def get_part(userId, part):
 	query = {}
 	query[part] = 1
 	p = users.find_one({"_id": ObjectId(userId)}, query)
-	print(p)
 	return p
 
 def getPartWith(by, value, part):
@@ -65,7 +65,7 @@ def addUser(username, password):
 
 def updateActivities(userid, activities):
 	newValues = { "$set": activities }
-	print(users.update_one({'_id': ObjectId(userid)}, newValues))
+	users.update_one({'_id': ObjectId(userid)}, newValues)
 
 def get_data(userid, parts):
 	query = {'_id': 0}
@@ -76,23 +76,46 @@ def get_data(userid, parts):
 	return p
 
 def get_leaderboard(id):
-	participants = users.find({}, {'username': 1, 'score': 1})
-	print("part", participants[0])
-	parts = []
-	found = False
+	parts = get_data(id, ['friends', 'username'])
+	friends = [] if 'friends' not in parts.keys() else parts['friends']
+	username = parts['username']
+	participants = users.find({}, {'username': 1, 'score': 1, '_id': 0})
+	participants.sort([("score", pymongo.DESCENDING)])
+
+	globalRanks = []
+	aroundRanks = []
+	friendRanks = []
+	everyone = []
 	index = 0
+	countdown = 0
 	for x in participants:
-		if x['_id'] == id: 
-			break
-		if found and len(parts)-index >= 5:
-				break
-		parts.append(x)
-		if not found: index += 1
+		x['place'] = index
+		if x['username'] == username:
+			x['you'] = True
+			begin = index-4 if len(parts)-index > 4 else 0
+			countdown = 8-(index-begin)
+			aroundRanks = everyone[begin:index]
+			
+		if len(globalRanks) < 8: globalRanks.append(x)
+		if x['username'] in friends: friendRanks.append(x)
+		if (countdown > 0):
+			countdown -= 1
+			aroundRanks.append(x)
+		everyone.append(x)
+		index += 1
 	
-	place = len(parts) - 10
 	return {
-		"places": [place, place+10],
-		"participants": parts[-10:-1]
+		"global": globalRanks,
+		"around": aroundRanks,
+		"friends": friendRanks
 	}
 
-	
+
+def search_names(name):
+	people = users.find({'username': {'$gte': name, '$lte': name+'z'}}, {'username': 1});
+	return [x.username for x in people]
+
+
+
+
+
