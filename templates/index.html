@@ -34,9 +34,9 @@
             <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <center>
-      <form id="general-transit-survey" class ="description" method="POST" target="dummyframe">
+          
+          <div class="modal-body"><center>
+            <form id="general-transit-survey" class ="description" method="POST" target="dummyframe">
               <h5> Have many times have you flown this year? </h5>
               <div class="slidercontainer">
                 <input name="transit-num_flown" type="range" min="0" max="15" value = "7" class="slider" id="num_flown_slider">
@@ -57,13 +57,15 @@
 
               <h5> How many kW of energy did you use this month? </h5>
               <div class="slidercontainer">
-                <input name="energy-energy" type="range" min="1" max="50" value = "25" class="slider" id='energy-slider'>
+                <input name="energy-kw" type="range" min="1" max="50" value = "25" class="slider" id="kw_slider">
               </div>
+              <label class="value_label" id="kw_val"> 30 </label>
 
-              <h5> How often do you purchase a new phone? </h5>
+              <h5> How often do you purchase a new phone (years)? </h5>
               <div class="slidercontainer">
-                <input name="energy-energy" type="range" min="1" max="50" value = "25" class="slider" id=''>
+                <input name="energy-phone" type="range" min="1" max="10" value = "5" class="slider" id="phone_slider">
               </div>
+              <label class="value_label" id="phone_val"> 2 </label>
 
               <h5> How often do you buy clothes? </h5>
                 <input type="checkbox" name="clothes-weekly" value="weekly">
@@ -75,8 +77,9 @@
 
               <h5> How many items do you buy? </h5>
               <div class="slidercontainer">
-                <input name="wardrobe-wardrobe" type="range" min="1" max="50" value = "25" class="slider" id='wardrobe-slider'>
+                <input name="wardrobe-wardrobe" type="range" min="1" max="50" value = "25" class="slider" id='wardrobe_slider'>
               </div>
+              <label class="value_label" id="wardrobe_val"> 2 </label>
 
 
               <h5> Where do you buy new clothes/shoes? </h5>
@@ -87,38 +90,35 @@
 
               
               <br>
-            <input type="submit" class="btn btn-primary" value="Save changes"></input>
-
+              <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
             
-
             <!-- Daily Transit Survey -->
             <form id="daily-transit-survey" class = "description hide" method="POST" target="dummyframe">
               <h5> How many miles do you drive today? </h5>
               <div class="slidercontainer">
                 <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="miles_slider">
               </div>
+              <label class="value_label" id="miles_val"> 2 </label>
 
               <h5> Did you carpool? </h5>
               <div class="slidercontainer">
                 <input name="dayTransit-carpool" type="range" min="0" max="650" value = "30" class="slider" id="carpool_slider">
               </div>
+              <label class="value_label" id="carpool_val"> 2 </label>
 
               <h5> Did you use public transportation? </h5>
               <div class="slidercontainer">
-                <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="miles_val">
+                <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="pub_trans_slider">
               </div>
-
-              <label class="value_label" id=""> 30 </label>
+              <label class="value_label" id="pub_trans_val"> 2 </label>
               <br>
-            <input type="submit" class="btn btn-primary" value="Save changes"></input>
-              
+              <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
 
             <!-- Daily Diet Survey -->
             <form id="diet-survey" class = "description hide" method="POST" target="dummyframe">
-              <h5> What did you eat for breakfast (calories)? </h5><br>
-
+              <h5> What did you eat for breakfast (calories)? </h5>
               <p>Meat/Fish/Eggs</p>
               <div class="slidercontainer">
                 <input name="diet-m_bfast" type="range" min="0" max="10000" value = "475" class="slider" id="m_bfast_slider">
@@ -142,7 +142,7 @@
               </div>
               <label class="value_label" id="f_bfast_val"> 240 </label>
 
-
+              <br>
               <h5> What did you eat for lunch (calories)? </h5>
               <p>Meat/Fish/Eggs</p>
               <div class="slidercontainer">
@@ -168,6 +168,7 @@
               </div>
               <label class="value_label" id="f_lunch_val"> 240 </label>
 
+              <br>
               <h5> What did you eat for dinner (calories)? </h5>
               <p>Meat/Fish/Eggs</p>
               <div class="slidercontainer">
@@ -192,6 +193,7 @@
               </div>
               <label class="value_label" id="f_dinner_val"> 240 </label>
               
+              <br>
               <h5> What did you eat for snacks? </h5>
               <p>Meat/Fish/Eggs</p>
               <div class="slidercontainer">
@@ -236,7 +238,7 @@
 
               <h5> How long did you watch internet-streamed videos today (hours)? </h5>
               <div class="slidercontainer">
-                <input name="energyvid_dur" type="range" min="0" max="24" value = "6" class="slider" id="vid_dur_slider">
+                <input name="energy-vid_dur" type="range" min="0" max="24" value = "6" class="slider" id="vid_dur_slider">
               </div>
               <label class="value_label" id="vid_dur_val"> 6 </label>
 
@@ -248,7 +250,7 @@
 
               <h5> How many Google searches did you make today? </h5>
               <div class="slidercontainer">
-                <input name="energy-searches" type="range" min="0" max="300" value = "25" class="slider" id="email_searches_slider">
+                <input name="energy-searches" type="range" min="0" max="300" value = "25" class="slider" id="searches_slider">
               </div>
               <label class="value_label" id="searches_val"> 25 </label>
               <br>
@@ -260,15 +262,15 @@
             <form id="wardrobe-survey" class = "description hide" method="POST" target="dummyframe">
               <h5> How many loads of laundry do you do a week? </h5>
               <div class="slidercontainer">
-                <input name="wardrobe-laundry_loads" type="range" min="1" max="50" value = "25" class="slider" id='laundry_loads-slider'>
+                <input name="wardrobe-laundry_loads" type="range" min="0" max="7" value="2" class="slider" id='laundry_loads_slider'>
               </div>
               <label class="value_label" id="laundry_loads_val"> 25 </label>
 
               <h5> Do you wash your laundry with cold or hot water? </h5>
               <input type="checkbox" name="wardrobe-wash_temp_hot" value="hot">
-              <label class="checkbox_label" for=""> Hot </label><br>
+              <label class="checkbox_label" for="wardrobe-wash_temp_hot"> Hot </label><br>
               <input type="checkbox" name="wardrobe-wash_temp_cold" value="cold">
-              <label class="checkbox_label" for=""> Cold </label><br>
+              <label class="checkbox_label" for="wardrobe-wash_temp_cold"> Cold </label><br>
 
 
               <h5> How do you dry your clothes? </h5>
@@ -279,10 +281,10 @@
 
               <h5> How often do you dry clean your clothes in a month? </h5>
               <div class="slidercontainer">
-                <input name="wardrobe-dry_clean" type="range" min="1" max="30" value = "25" class="slider" id="dry_clean-slider">
+                <input name="wardrobe-dry_clean" type="range" min="0" max="10" value="2" class="slider" id="dry_clean_slider">
               </div>
-              <label class="value_label" id="searches_val"> 25 </label>
-
+              <label class="value_label" id="dry_clean_val"> 2 </label>
+              <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
 
@@ -290,7 +292,7 @@
             <form id="recycling-survey" class = "description hide" method="POST" target="dummyframe">
               <p> QUESTION? </p>
               <div class="slidercontainer">
-                <input name="recycle-recycle" type="range" min="1" max="50" value = "25" class="slider" id="recycle-slider">
+                <input name="recycle-recycle" type="range" min="0" max="50" value = "25" class="slider" id="recycle_slider">
               </div>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
@@ -298,16 +300,52 @@
 
             <!-- Daily Water Survey -->
             <form id="water-survey" class = "description hide" method="POST" target="dummyframe">
-              
-              <p> How long did you shower? </p>
+              <h5> How many baths did you take today? </h5>
               <div class="slidercontainer">
-                <input name="water-water_length" type="range" min="1" max="50" value = "25" class="slider" id="water_length-slider">
+                <input name="water-num_baths" type="range" min="0" max="5" value = "1" class="slider" id="num_baths_slider">
               </div>
-              
-              <p> Hot or cold? </p>
+              <label class="value_label" id="num_baths_val"> 1 </label>
+
+
+              <h5> How long do you shower (minutes)? </h5>
               <div class="slidercontainer">
-                <input name="water-water_temp" type="range" min="1" max="50" value = "25" class="slider" id="water_temp-slider">
+                <input name="water-shower_len" type="range" min="0" max="20" value = "8" class="slider" id="shower_len_slider">
               </div>
+              <label class="value_label" id="shower_len_val"> 8 </label>
+              
+              <h5> Hot or cold? </h5>
+              <input type="checkbox" name="water-wash_temp_hot" value="hot">
+              <label class="checkbox_label" for="water-wash_temp_hot"> Hot </label><br>
+              <input type="checkbox" name="water-wash_temp_cold" value="cold">
+              <label class="checkbox_label" for="water-wash_temp_cold"> Cold </label><br>
+
+              <h5> How many times did you run your dishwasher? </h5>
+              <div class="slidercontainer">
+                <input name="water-dishwasher_loads" type="range" min="0" max="5" value = "1" class="slider" id="dishwasher_loads_slider">
+              </div>
+              <label class="value_label" id="dishwasher_loads_val"> 1 </label>
+
+              <h5> How many times did you use the toilet? </h5>
+              <div class="slidercontainer">
+                <input name="water-hand_wash_dish" type="range" min="0" max="10" value = "3" class="slider" id="hand_wash_dish_slider">
+              </div>
+              <label class="value_label" id="hand_wash_dish_val"> 3 </label>
+              
+              <h5> Laundry - How many loads do you wash per week? </h5>
+              <div class="slidercontainer">
+                <input name="water-laundry" type="range" min="0" max="10" value = "3" class="slider" id="laundry_load_slider">
+              </div>
+              <label class="value_label" id="laundry_load_val"> 3 </label>
+              
+              <h5> Do you water a garden? </h5>
+              <input type="checkbox" name="garden_yes" value="hot">
+              <label class="checkbox_label" for="garden_yes"> Yes </label><br>
+              <input type="checkbox" name="garden_no" value="cold">
+              <label class="checkbox_label" for="garden_no"> No </label><br>
+
+              <br>
+              <input type="submit" class="btn btn-primary" value="Save changes"></input>
+            </form>
             </center>             
           </div>
         </div>

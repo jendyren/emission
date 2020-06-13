@@ -170,10 +170,12 @@ def mapPage():
 @app.route('/profile')
 @flask_login.login_required
 def profile():
-	
-	
 	username = flask_login.current_user.id
-	return render_template('profile.html', username=username)
+
+	userid = request.cookies.get('userID')
+	friends = db.get_data(userid, ['friends'])
+	friends = [] if 'friends' not in friends else friends["friends"]
+	return render_template('profile.html', username=username, friends=friends)
 
 @app.route('/information')
 @flask_login.login_required
@@ -196,13 +198,17 @@ def getLeader():
 	re = db.get_leaderboard(userid)
 	return jsonify(re)
 
-@app.route('/search', methods=['GET', 'POST'])
-def searchNames():
-	if request.method == 'GET':
-		username = flask_login.current_user.id
-		return render_template('search.html', username=username)
+@app.route('/befriend', methods=['POST'])
+@flask_login.login_required
+def befriend():
+	userid = request.cookies.get('userID')
+	othername = request.get_json()['name']
+	db.befriend(userid, othername)
+	return ""
 
-	name = request.data()['name']
+@app.route('/search', methods=['POST'])
+def searchNames():
+	name = request.get_json()['name']
 	return jsonify({'names': db.search_names(name)})
 
 

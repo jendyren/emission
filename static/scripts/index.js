@@ -52,7 +52,7 @@ for (let el of sliders){
 	let label = id.replace('_slider', "_val");
 	names.push('activities.' + el.name.replace('-', '.'));
 	el.oninput = function(){
-		console.log(label);
+		//console.log(label);
 		document.getElementById(label).innerHTML = this.value;	
 	}
 }
@@ -65,10 +65,10 @@ fetch('/get-info', {
 	body: JSON.stringify({parts: names})
 }).then(response => response.json()).then(data => {
 	data = data.activities;
-	console.log(data)
+	//console.log(data)
 	for (let key of Object.keys(data)){
 		inner = Object.keys(data[key]);
-		console.log('inner', inner);
+		//console.log('inner', inner);
 		for (let p of inner){
 			let id = p;
 			let val = data[key][p];
@@ -80,4 +80,22 @@ fetch('/get-info', {
 			}
 		}
 	}
+  
+  calculate_transit_co2(data.transit, data.dayTransit);
+  calculate_energy_co2(data.energy);
 });
+
+function calculate_transit_co2(overall_transit, day_transit){
+  if (overall_transit.mpg != 0){
+    let driving_co2 = day_transit.mileDrive / overall_transit.mpg * 1940 / 95;
+  }
+  
+
+}
+
+
+function calculate_energy_co2(energy){
+  let daily_energy_to_co2 = ((energy.call_dur * 23.5) + (energy.txt_dur * .057) + (energy.vid_dur * .06 * .2) + (energy.searches * .0036) + (energy.email_sent * .004)) * .001;
+  let gen_energy_to_co2;
+}
+

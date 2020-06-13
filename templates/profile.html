@@ -14,75 +14,88 @@
 </head>
 
 <body id="profile-page">
+
+	<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+	
 	<center>
-		<h2> Profile </h2>
+		<h2> Profile </h2> <br>
+    <h3 id="sustainability_score">Sustainability Score: {{score}}</h3>
+		<div class='spread'>
+			<div class="down left">
+					<p> Overview </p>
+						<div class="area-description-container">
+							<div class="area-description">
+								<img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="100" height="100">
+							</div>
+							<div class="area-description">
+								<p> Your transit causes __ tons of CO2 emissions per year.<p> 
+								<p> Your carbon emissions caused by transit are higher than __ % of people.<p> <br>
+							</div> 
 
-		<div class="grid-container">
-			<div class="grid-item">
-        <p> Overview </p>
-          <div class="area-description-container">
-            <div class="area-description">
-              <img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="100" height="100">
-            </div>
-            <div class="area-description">
-              <p> Your transit causes __ tons of CO2 emissions per year.<p> 
-              <p> Your carbon emissions caused by transit are higher than __ % of people.<p> <br>
-            </div> 
+							<div class="area-description">
+								<img class="rounded-circle" src="/static/images/diet.png" alt="diet" width="100" height="100">
+							</div>
+							<div class="area-description">
+								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+							</div> 
 
-            <div class="area-description">
-              <img class="rounded-circle" src="/static/images/diet.png" alt="diet" width="100" height="100">
-            </div>
-            <div class="area-description">
-              <p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
-            </div> 
+							<div class="area-description">
+								<img class="rounded-circle" src="/static/images/energy.png" alt="Energy" width="100" height="100">
+							</div>
+							<div class="area-description">
+								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+							</div> 
 
-            <div class="area-description">
-              <img class="rounded-circle" src="/static/images/energy.png" alt="Energy" width="100" height="100">
-            </div>
-            <div class="area-description">
-              <p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
-            </div> 
+							<div class="area-description">
+									<img class="rounded-circle" src="/static/images/wardrobe.png" alt="wardrobe" width="100" height="100">
+							</div>
+							<div class="area-description">
+								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+							</div>
 
-            <div class="area-description">
-              	<img class="rounded-circle" src="/static/images/wardrobe.png" alt="wardrobe" width="100" height="100">
-            </div>
-            <div class="area-description">
-              <p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
-            </div>
+							<div class="area-description">
+									<img class="rounded-circle" src="/static/images/recycling.png" alt="Recycling" width="100" height="100">
+							</div>
+							<div class="area-description">
+								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+							</div> 
+							
+							<div class="area-description">
+								<img class="rounded-circle" src="/static/images/water.png" alt="water" width="100" height="100">
+							</div>
+							<div class="area-description">
+								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+							</div> 
+				
+				</div>	
+			</div>
 
-            <div class="area-description">
-              	<img class="rounded-circle" src="/static/images/recycling.png" alt="Recycling" width="100" height="100">
-            </div>
-            <div class="area-description">
-              <p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
-            </div> 
-            
-            <div class="area-description">
-              <img class="rounded-circle" src="/static/images/water.png" alt="water" width="100" height="100">
-            </div>
-            <div class="area-description">
-              <p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
-            </div> 
-          </div>
+      <div id = 'gradesystem'>
+        <img src = "/static/images/gradescale.png" alt = "Grade Scale" width = "250">
+      </div>
 
-       
-        </div>
+			<div id='friend-box'>
+				<input type='text' placeholder='Search For Friends!' id='user-search' oninput="search()"></input>
+				<div id='name-preview'></div>
 
-				<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-          
-   
-        
-    </div>
+				<div id='friend-list'>
+
+					{% for friend in friends %}
+            <p> {{friend}}</p>
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+
+		</div>
+
 
     
   </center>
 
-	<div id='friend-box'>
-		<input type=''
 
-		<div id='friend-list'></div>
-
-	</div>
 
 		{% include "partials/include js.html" %}
     

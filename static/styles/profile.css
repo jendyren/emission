@@ -32,3 +32,25 @@
   font-size: 10px;
   text-align: left;
 }
+
+.spread {
+  margin-right: 10%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: initial;
+}
+
+.down {
+	display: flex;
+	flex-direction: column;
+}
+
+.left {
+  margin-left: 2%;
+	width: 50%;
+}
+
+#friend-box {
+	margin-right: 2em;
+}

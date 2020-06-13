@@ -6,9 +6,15 @@
 		{% include "partials/full navbar.html" %}
 	</head>
 	<body>
-
-		<h2> Settings </h2>
+    <center>
+		  <h2> Settings </h2>
+    
+      {% if username %}
+			<a class="logout" href="/logout">Log Out</a>
+		  {% endif %}
+    </center>
 	{% include "partials/include js.html" %}
+  
 	</body>
 
 </html>

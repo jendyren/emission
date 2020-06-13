@@ -59,10 +59,12 @@ body {
 }
 
 .carousel-item {
+  object-fit: contain;
   height: 32rem;
-  background-color: #eee;
+  background-color: #000;
 }
 .carousel-item > img {
+  object-fit: contain;
   position: absolute;
   top: 0;
   left: 0;

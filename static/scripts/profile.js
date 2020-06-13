@@ -24,27 +24,56 @@ for (let el of sliders){
 	}
 }
 
-fetch('/get-info', {
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json'
-	},
-	body: JSON.stringify({parts: names})
-}).then(response => response.json()).then(data => {
-	data = data.activities;
-	console.log(data)
-	for (let key of Object.keys(data)){
-		inner = Object.keys(data[key]);
-		console.log('inner', inner);
-		for (let p of inner){
-			let id = p;
-			let val = data[key][p];
-			if (document.getElementById(p + '_slider')){
-				document.getElementById(p + '_slider').value = val;
-			}
-			if (document.getElementById(p + 'val')){
-				document.getElementById(p + 'val').innerHTML = val;
-			}
+function search(){
+	let name = document.getElementById('user-search').value;
+	let nameBox = document.getElementById('name-preview');
+	if (name == ""){
+		nameBox.innerHTML = "";
+		return;
+	};
+
+	fetch('/search', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({name: name})
+	}).then(response => response.json()).then(data => {
+		console.log(data)
+		people = data.names;
+		nameBox.innerHTML = "";
+		for (let i of people){
+			nameBox.innerHTML += `
+				<p>${i}</p>
+			`
 		}
-	}
-});
+	
+	});
+
+
+}
+
+// fetch('/get-info', {
+// 	method: 'POST',
+// 	headers: {
+// 		'Content-Type': 'application/json'
+// 	},
+// 	body: JSON.stringify({parts: names})
+// }).then(response => response.json()).then(data => {
+// 	data = data.activities;
+// 	console.log(data)
+// 	for (let key of Object.keys(data)){
+// 		inner = Object.keys(data[key]);
+// 		console.log('inner', inner);
+// 		for (let p of inner){
+// 			let id = p;
+// 			let val = data[key][p];
+// 			if (document.getElementById(p + '_slider')){
+// 				document.getElementById(p + '_slider').value = val;
+// 			}
+// 			if (document.getElementById(p + 'val')){
+// 				document.getElementById(p + 'val').innerHTML = val;
+// 			}
+// 		}
+// 	}
+// });
