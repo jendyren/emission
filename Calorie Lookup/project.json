@@ -1,0 +1,38 @@
+{
+  "name": "BlankProcess",
+  "description": "Blank Process",
+  "main": "Main.xaml",
+  "dependencies": {
+    "python": "[3.9.0-b3]",
+    "UiPath.Excel.Activities": "[2.8.5]",
+    "UiPath.Mail.Activities": "[1.8.5]",
+    "UiPath.Python.Activities": "[1.1.6863.33404]",
+    "UiPath.System.Activities": "[20.4.0]",
+    "UiPath.UIAutomation.Activities": "[20.4.1]"
+  },
+  "webServices": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.4.1.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "fileInfoCollection": []
+  },
+  "expressionLanguage": "VisualBasic"
+}
