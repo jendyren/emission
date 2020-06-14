@@ -6,6 +6,14 @@
 		{% include "partials/full navbar.html" %}
 	</head>
 	<body id="dashboard-page">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+      <df-messenger
+        intent="WELCOME"
+        chat-title="emission"
+        agent-id="f877e4c0-bc08-4f5c-b62c-1e987e537dec"
+        language-code="en"
+      ></df-messenger>
 		<iframe style="display: none" name="dummyframe"></iframe>
 		<!-- Notifications -->
 		{% with messages = get_flashed_messages() %}
@@ -75,17 +83,19 @@
             
             <!-- Daily Transit Survey -->
             <form id="daily-transit-survey" class = "description hide" method="POST" target="dummyframe">
-              <h5> How many miles do you drive today? </h5>
+              <h5> How many miles did you drive today? </h5>
               <div class="slidercontainer">
                 <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="miles_slider">
               </div>
               <label class="value_label" id="miles_val"> 2 </label>
 
               <h5> Did you use public transportation? </h5>
-              <div class="slidercontainer">
-                <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="pub_trans_slider">
-              </div>
-              <label class="value_label" id="pub_trans_val"> 2 </label>
+              <p>
+                  <input type="radio" value="1" name="dayTransit-pub_trans_yes_no"> Yes</input>
+                </p>
+                <p>
+                  <input type="radio" value="0" name="dayTransit-pub_trans_yes_no"> No</input>
+                </p>
               <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
@@ -149,7 +159,7 @@
 
               <h5> How many emails did you send today? </h5>
               <div class="slidercontainer">
-                <input name="energy-email_sent" type="range" min="0" max="500" value = "120" class="slider" id="email_sent_slider">
+                <input name="energy-email_sent" type="range" min="0" max="100" value = "120" class="slider" id="email_sent_slider">
               </div>
               <label class="value_label" id="email_sent_val"> 120 </label>
 
@@ -177,7 +187,7 @@
               <div class="slidercontainer">
                 <input name="wardrobe-shirts" type="range" min="1" max="50" value = "2" class="slider" id='shirts_slider'>
               </div>
-              <label class="value_label" id="shirt_val"> 2 </label>
+              <label class="value_label" id="shirts_val"> 2 </label>
 
               <h5> How many pants do you buy? </h5>
               <div class="slidercontainer">
@@ -252,16 +262,6 @@
                 </p>
                 <p>
                   <input type="radio" value="0" name="recycling-cans_yes_no"> No</input>
-                </p>
-              </div>
-              
-              <div id="wrapper">
-                <h5>Do you donate or re-use old clothing, sheets, blankets and towels?</h5>
-                <p>
-                  <input type="radio" value="1" name="recycling-clothing_yes_no"> Yes</input>
-                </p>
-                <p>
-                  <input type="radio" value="0" name="recycling-clothing_yes_no"> No</input>
                 </p>
               </div>
 
@@ -349,7 +349,7 @@
 		<div class='row'>
 			<div class='col-6 landing-text-wrapper'>
 				<h2><span id="time_of_day">Good day</span>, {{username}}! </h2>
-				<h5>It's a great day to take care of our Earth! <br>Your sustainability score is <span class="badge badge-info">{{score}}</span></h5>
+				<h5>It's a great day to take care of our Earth! <br>Your sustainability score is <span id="sustainability-score" class="badge badge-info">0</span></h5>
 
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Input your daily impact </button>
@@ -393,6 +393,9 @@
 		</div>
 			</div>
 		</div>
+
+		<input type="text" placeholder="Type in any food to know its calories!" onchange="getCalories(this.value)"><span id='calories'></span>
+
 
     
     <br><br><br><br>

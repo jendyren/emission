@@ -3,6 +3,10 @@ import db
 app = Flask('app')
 app.secret_key = 'super secret string'  # Change this!
 
+uiPathAnswers = {}
+doUI = True
+uiAsk = "hamburger"
+
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
@@ -119,27 +123,20 @@ def dashboard():
 	username = flask_login.current_user.id
 	print('Logged in as: ' + username)
 	userid = request.cookies.get('userID')
+	#print(db.get_data(userid, []))
+	scores = db.get_data(userid, ['score'])["score"]
 
-	score = db.get_data(userid, ['score'])["score"]
 	activities = db.get_data(userid, ['activities'])
-
-	"""
-	# formatting the activities data for the line chart
-	# Need to save scores to the database first
-	
-	"""
-
 	if request.method == 'POST' and request.form:
 		activities = {}
-		date = 'd' + request.form['date'].replace('/', '_')
+		date = "d" + request.form["date"].replace("/", '_')
 		for i, val in request.form.items():
 			if i == 'date': continue
 			if val.lstrip('-+').isdigit(): val = int(val)
-			print(i, val)
 			activities['activities.' + i.replace('-', '.') + '.' + date] = val
 		db.updateActivities(userid, activities)
 		flash("Your responses have been saved!")
-	return render_template('index.html', username=username, score=score)
+	return render_template('index.html', username=username)
 
 @app.route('/logout')
 @flask_login.login_required
@@ -196,12 +193,50 @@ def getInfo():
 	re = db.get_data(userid, data)
 	return jsonify(re)
 
+@app.route('/save-scores', methods=['POST'])
+@flask_login.login_required
+def saveScore():
+	data = request.get_json()
+	userid = request.cookies.get('userID')
+	db.updateActivities(userid, data)
+	return jsonify({})
+
 @app.route('/get-leader', methods=['POST'])
 @flask_login.login_required
 def getLeader():
 	userid = request.cookies.get('userID')
 	re = db.get_leaderboard(userid)
 	return jsonify(re)
+
+@app.route('/foodCalorie', methods=['POST'])
+@flask_login.login_required
+def foodCalorie():
+	global uiAsk, doUI, uiPathAnswers
+	data = request.get_json()['food']
+	print('getting', data)
+	uiAsk = data
+	doUI = True
+	while data not in uiPathAnswers:
+		pass
+	return jsonify({'answer': uiPathAnswers[data]})
+
+@app.route('/ui-data', methods=['POST'])
+def uiData():
+	global uiPathAnswers
+	data = request.get_json()
+	print("DATA", data)
+	food = data['food']
+	calories = data['calories']
+	uiPathAnswers[food] = calories
+	return jsonify({})
+
+@app.route('/ui-go', methods=['POST'])
+def goUI():
+	global doUI
+	if doUI:
+		doUI = False
+		return jsonify({"go": True, "food": uiAsk})
+	return jsonify({"go": False})
 
 @app.route('/befriend', methods=['POST'])
 @flask_login.login_required
@@ -215,6 +250,12 @@ def befriend():
 def searchNames():
 	name = request.get_json()['name']
 	return jsonify({'names': db.search_names(name)})
+
+@app.route('/google-cloud', methods=['POST'])
+def cloud():
+	j = request.get_json()
+	print(j)
+	return jsonify({})
 
 
 
