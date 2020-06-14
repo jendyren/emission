@@ -80,7 +80,7 @@ def get_leaderboard(id):
 	friends = [] if 'friends' not in parts.keys() else parts['friends']
 	username = parts['username']
 	participants = users.find({}, {'username': 1, 'score': 1, '_id': 0})
-	participants.sort([("score", pymongo.DESCENDING)])
+	participants.sort([("score", pymongo.ASCENDING)])
 
 	globalRanks = []
 	aroundRanks = []
@@ -89,7 +89,10 @@ def get_leaderboard(id):
 	index = 0
 	countdown = 0
 	for x in participants:
-		x['place'] = index
+		if x['score'] == 0:
+			continue
+		else:
+			x['place'] = index
 		if x['username'] == username:
 			x['you'] = True
 			begin = index-4 if len(parts)-index > 4 else 0
