@@ -24,11 +24,11 @@ var currentDate = new Date();
 var hour = currentDate.getHours();
 
 if (hour < 12){
-  document.getElementById("time_of_day").innerHTML = "Good Morning!"
+  document.getElementById("time_of_day").innerHTML = "Good morning"
 }
 else if ((hour >= 12) && (hour < 18)){
-  document.getElementById("time_of_day").innerHTML = "Good Afternoon!"
+  document.getElementById("time_of_day").innerHTML = "Good afternoon"
 }
 else {
-  document.getElementById("time_of_day").innerHTML = "Good Evening!"
+  document.getElementById("time_of_day").innerHTML = "Good evening"
 }

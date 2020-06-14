@@ -1,3 +1,10 @@
+body {
+ font-family: 'Montserrat', sans-serif;
+ background-image: url("https://cdn.discordapp.com/attachments/720097811135201291/721517833271378050/info_5.png");
+ background-repeat: no-repeat;
+ background-attachment: fixed;  
+ background-size: cover;
+}
 
 .about{
   margin-left: 10%;
@@ -11,8 +18,14 @@
 	width:100%;
 }
 .landing-img-wrapper {
-	margin-top:-4%;
 }
+
+p {
+	background: rgba(255,255,255,0.7);
+	padding:5px;
+	border-radius:10px;
+}
+
 .landing-text-wrapper {
 	padding:20px;
 	padding-left: 100px;

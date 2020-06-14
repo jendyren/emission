@@ -1,5 +1,10 @@
+
 body {
  font-family: 'Montserrat', sans-serif;
+ background-image: url("https://cdn.discordapp.com/attachments/720097811135201291/721510337505001532/index_2.png");
+ background-repeat: no-repeat;
+ background-attachment: fixed;  
+ background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -7,10 +12,19 @@ h1, h2, h3, h4, h5, h6 {
  font-weight: 700 !important;
 }
 
+#dashboard-page h2{
+  text-decoration: none !important;
+}
+
 p {
 	font-family: 'Montserrat', sans-serif;
 	font-size:20px;
+	/*background:rgba(255,255,255,0.5);*/
+	padding:5px;
+	border-radius:10px;
 }
+
+
 
 a {
 	font-weight:600 !important;
@@ -49,19 +63,31 @@ body {
 }
 
 .carousel {
-  margin-bottom: 4rem;
+	margin-top: 1rem;
 	padding-top: 0px;
+	background-color: white;
+	border:#333 solid 3px;
+	border-radius:10px;
+	padding:10px;
+	height:50vh;
+}
+
+.carousel h3 {
+	color: white;
 }
 
 .carousel-caption {
-  bottom: 3rem;
+  bottom: 2rem;
+  left:0;
   z-index: 10;
+  background:rgba(0,0,0,0.5);
+  width:100%;
 }
 
 .carousel-item {
   object-fit: contain;
-  height: 32rem;
-  background-color: #000;
+  height:47vh;
+  background-color: white;
 }
 .carousel-item > img {
   object-fit: contain;
@@ -70,6 +96,14 @@ body {
   left: 0;
   min-width: 100%;
   height: 32rem;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
 
 .marketing .col-lg-4 {

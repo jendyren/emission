@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 </html>
 	<head>
+    
 		{% include "partials/header.html" %}
 		{% include "partials/full navbar.html" %}
 	</head>
@@ -57,38 +58,16 @@
 
               <h5> How many kW of energy did you use this month? </h5>
               <div class="slidercontainer">
-                <input name="energy-kw" type="range" min="1" max="50" value = "25" class="slider" id="kw_slider">
+                <input name="energy-kw" type="range" min="1" max="15000" value = "10000" class="slider" id="kw_slider">
               </div>
-              <label class="value_label" id="kw_val"> 30 </label>
+              <label class="value_label" id="kw_val"> 10000 </label>
 
               <h5> How often do you purchase a new phone (years)? </h5>
               <div class="slidercontainer">
-                <input name="energy-phone" type="range" min="1" max="10" value = "5" class="slider" id="phone_slider">
+                <input name="energy-phone" type="range" min="1" max="10" value = "2" class="slider" id="phone_slider">
               </div>
               <label class="value_label" id="phone_val"> 2 </label>
-
-              <h5> How often do you buy clothes? </h5>
-                <input type="checkbox" name="clothes-weekly" value="weekly">
-                <label class="checkbox_label" for="weekly"> Weekly </label><br>
-                <input type="checkbox" name="clothes-monthly" value="monthly">
-                <label class="checkbox_label" for=""> Month </label><br>
-                <input type="checkbox" name="clothes-yearly" value="yearly">
-                <label class="checkbox_label" for=""> Yearly</label><br>
-
-              <h5> How many items do you buy? </h5>
-              <div class="slidercontainer">
-                <input name="wardrobe-wardrobe" type="range" min="1" max="50" value = "25" class="slider" id='wardrobe_slider'>
-              </div>
-              <label class="value_label" id="wardrobe_val"> 2 </label>
-
-
-              <h5> Where do you buy new clothes/shoes? </h5>
-                <input type="checkbox" name="newClothes-second_hand" value="second_hand">
-                <label class="checkbox_label" for="second_hand"> Second-Hand </label><br>
-                <input type="checkbox" name="newClothes-brand_new" value="brand_new">
-                <label class="checkbox_label" for="brand_new"> Brand New </label><br>
-
-              
+             
               <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
@@ -121,26 +100,33 @@
               <h5> What did you eat for today (calories)? </h5>
               <p>Meat/Fish/Eggs</p>
               <div class="slidercontainer">
-                <input name="diet-m" type="range" min="0" max="2000" value = "100" class="slider" id="m_bfast_slider">
+                <input name="diet-m" type="range" min="0" max="2000" value = "475" class="slider" id="m_slider">
               </div>
-              <label class="value_label" id="m_bfast_val"> 100 </label>
+              <label class="value_label" id="m_val"> 475 </label>
 
               <p>Grains/Baked Goods</p>
               <div class="slidercontainer">
-                <input name="diet-g" type="range" min="0" max="2000" value = "590" class="slider" id="g_bfast_slider">
-              </div><label class="value_label" id="g_bfast_val"> 590 </label>
+                <input name="diet-g" type="range" min="0" max="2000" value = "590" class="slider" id="g_slider">
+              </div><label class="value_label" id="g_val"> 590 </label>
 
               <p>Dairy</p>
               <div class="slidercontainer">
-                <input name="diet-d" type="range" min="0" max="2000" value = "250" class="slider" id="d_bfast_slider">
+                <input name="diet-d" type="range" min="0" max="2000" value = "250" class="slider" id="d_slider">
               </div>
-              <label class="value_label" id="d_bfast_val"> 250 </label>
+              <label class="value_label" id="d_val"> 250 </label>
 
               <p>Fruits/Vegetables</p>
               <div class="slidercontainer">
-                <input name="diet-f" type="range" min="0" max="2000" value = "240" class="slider" id="f_bfast_slider">
+                <input name="diet-f" type="range" min="0" max="2000" value = "240" class="slider" id="f_slider">
               </div>
-              <label class="value_label" id="f_bfast_val"> 240 </label>
+              <label class="value_label" id="f_val"> 240 </label>
+
+              <h5>How much do you spend eating out per month? </h5>
+              <div class="slidercontainer">
+                <input name="diet-out" type="range" min="0" max="1000" value = "250" class="slider" id="out_slider">
+              </div>
+              <label class="value_label" id="out_val"> 250 </label>
+
               <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
               
@@ -184,29 +170,68 @@
 
             <!-- General Wardrobe Survey -->
             <form id="wardrobe-survey" class = "description hide" method="POST" target="dummyframe">
-              <h5> How many loads of laundry do you do a week? </h5>
+              <h5> How often do you buy clothes? </h5>
+                <input type="checkbox" name="clothes-weekly" value="weekly">
+                <label class="checkbox_label" for="weekly"> Weekly </label><br>
+                <input type="checkbox" name="clothes-monthly" value="monthly">
+                <label class="checkbox_label" for=""> Month </label><br>
+                <input type="checkbox" name="clothes-yearly" value="yearly">
+                <label class="checkbox_label" for=""> Yearly</label><br>
+
+              <h5> How many shirts do you buy? </h5>
               <div class="slidercontainer">
-                <input name="wardrobe-laundry_loads" type="range" min="0" max="7" value="2" class="slider" id='laundry_loads_slider'>
+                <input name="wardrobe-shirts" type="range" min="1" max="50" value = "2" class="slider" id='shirts_slider'>
               </div>
-              <label class="value_label" id="laundry_loads_val"> 25 </label>
+              <label class="value_label" id="shirt_val"> 2 </label>
 
-              <h5> Do you wash your laundry with cold or hot water? </h5>
-              <input type="checkbox" name="wardrobe-wash_temp_hot" value="hot">
-              <label class="checkbox_label" for="wardrobe-wash_temp_hot"> Hot </label><br>
-              <input type="checkbox" name="wardrobe-wash_temp_cold" value="cold">
-              <label class="checkbox_label" for="wardrobe-wash_temp_cold"> Cold </label><br>
+              <h5> How many pants do you buy? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-pants" type="range" min="1" max="50" value = "2" class="slider" id='pants_slider'>
+              </div>
+              <label class="value_label" id="pants_val"> 2 </label>
 
+              <h5> How many pairs of underwear do you buy? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-underwear" type="range" min="1" max="50" value = "2" class="slider" id='underwear_slider'>
+              </div>
+              <label class="value_label" id="underwear_val"> 2 </label>
 
-              <h5> How do you dry your clothes? </h5>
-              <input type="checkbox" name="wardrobe-dry_meth_dryer" value="dryer">
-              <label class="checkbox_label" for=""> Laundry Dryer </label><br>
-              <input type="checkbox" name="wardrobe-dry_meth_line" value="line">
-              <label class="checkbox_label" for=""> Air Dry </label><br>
+              <h5> How many jackets do you buy? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-jacket" type="range" min="1" max="50" value = "2" class="slider" id='jacket_slider'>
+              </div>
+              <label class="value_label" id="jacket_val"> 2 </label>
+
+              <h5> How many shoes do you buy? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-shoes" type="range" min="1" max="50" value = "2" class="slider" id='shoes_slider'>
+              </div>
+              <label class="value_label" id="shoes_val"> 2 </label>
+
+              <h5> Where do you buy new clothes/shoes? </h5>
+                <input type="checkbox" name="newClothes-second_hand" value="second_hand">
+                <label class="checkbox_label" for="second_hand"> Second-Hand </label><br>
+                <input type="checkbox" name="newClothes-brand_new" value="brand_new">
+                <label class="checkbox_label" for="brand_new"> Brand New </label><br>
+
+              <h5> How many loads do you dry in a laundry dyer in a week? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-mach_dryer" type="range" min="1" max="10" value = "2" class="slider" id='mach_dryer_slider'>
+              </div>
+              <label class="value_label" id="mach_dryer_val"> 2 </label>
+
+              <h5> How many items of clothing do you iron in a week? </h5>
+              <div class="slidercontainer">
+                <input name="wardrobe-iron" type="range" min="1" max="15" value = "2" class="slider" id='iron_slider'>
+              </div>
+              <label class="value_label" id="iron_val"> 2 </label>
+
 
               <h5> How often do you dry clean your clothes in a month? </h5>
               <div class="slidercontainer">
                 <input name="wardrobe-dry_clean" type="range" min="0" max="10" value="2" class="slider" id="dry_clean_slider">
               </div>
+
               <label class="value_label" id="dry_clean_val"> 2 </label>
               <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
@@ -218,7 +243,7 @@
               <div id="wrapper">
                 <h5>Do you recycle plastic?</h5>
                 <p>
-                  <input type="radio" name="plastic_yes_no" checked> Yes</input>
+                  <input type="radio" name="plastic_yes_no"> Yes</input>
                 </p>
                 <p>
                   <input type="radio" name="plastic_yes_no"> No</input>
@@ -228,7 +253,7 @@
               <div id="wrapper">
                 <h5>Do you recycle bottles and cans?</h5>
                 <p>
-                  <input type="radio" name="cans_yes_no" checked> Yes</input>
+                  <input type="radio" name="cans_yes_no"> Yes</input>
                 </p>
                 <p>
                   <input type="radio" name="cans_yes_no"> No</input>
@@ -238,7 +263,7 @@
               <div id="wrapper">
                 <h5>Do you donate or re-use old clothing, sheets, blankets and towels?</h5>
                 <p>
-                  <input type="radio" name="clothing_yes_no" checked> Yes</input>
+                  <input type="radio" name="clothing_yes_no"> Yes</input>
                 </p>
                 <p>
                   <input type="radio" name="clothing_yes_no"> No</input>
@@ -248,12 +273,23 @@
               <div id="wrapper">
                 <h5>Do you recycle paper?</h5>
                 <p>
-                  <input type="radio" name="paper_yes_no" checked> Yes</input>
+                  <input type="radio" name="paper_yes_no"> Yes</input>
                 </p>
                 <p>
                   <input type="radio" name="paper_yes_no"> No</input>
                 </p>
               </div>
+
+              <div id="wrapper">
+                <h5>Do you use a reusable water bottle?</h5>
+                <p>
+                  <input type="radio" name="paper_yes_no"> Yes</input>
+                </p>
+                <p>
+                  <input type="radio" name="paper_yes_no"> No</input>
+                </p>
+              </div>
+
               <br>
               <input type="submit" class="btn btn-primary" value="Save changes"></input>
             </form>
@@ -274,25 +310,25 @@
               </div>
               <label class="value_label" id="shower_len_val"> 8 </label>
               
-              <h5> Hot or cold? </h5>
-              <input type="checkbox" name="water-wash_temp_hot" value="hot">
-              <label class="checkbox_label" for="water-wash_temp_hot"> Hot </label><br>
-              <input type="checkbox" name="water-wash_temp_cold" value="cold">
-              <label class="checkbox_label" for="water-wash_temp_cold"> Cold </label><br>
-
               <h5> How many times did you run your dishwasher? </h5>
               <div class="slidercontainer">
                 <input name="water-dishwasher_loads" type="range" min="0" max="5" value = "1" class="slider" id="dishwasher_loads_slider">
               </div>
               <label class="value_label" id="dishwasher_loads_val"> 1 </label>
 
+              <h5> How many times did you handwash dishes? </h5>
+              <div class="slidercontainer">
+                <input name="water-hand_wash_dish" type="range" min="0" max="5" value = "1" class="slider" id="hand_wash_dish_slider">
+              </div>
+              <label class="value_label" id="hand_wash_dish_val"> 1 </label>
+
               <h5> How many times did you use the toilet? </h5>
               <div class="slidercontainer">
-                <input name="water-hand_wash_dish" type="range" min="0" max="10" value = "3" class="slider" id="hand_wash_dish_slider">
+                <input name="water-toilet" type="range" min="0" max="10" value = "3" class="slider" id="toilet_slider">
               </div>
-              <label class="value_label" id="hand_wash_dish_val"> 3 </label>
+              <label class="value_label" id="toilet_val"> 3 </label>
               
-              <h5> Laundry - How many loads do you wash per week? </h5>
+              <h5> How many loads of laundry do you wash per week? </h5>
               <div class="slidercontainer">
                 <input name="water-laundry" type="range" min="0" max="10" value = "3" class="slider" id="laundry_load_slider">
               </div>
@@ -300,10 +336,10 @@
               
               <h5> Do you water a garden? </h5>
               <p>
-                <input type="radio" name="cans_yes_no" checked> Yes</input>
+                <input type="radio" name="water-has_garden"> Yes</input>
               </p>
               <p>
-                <input type="radio" name="cans_yes_no"> No</input>
+                <input type="radio" name="water-no_garden"> No</input>
               </p>
 
               <br>
@@ -315,22 +351,18 @@
       </div>
 		</div>
 
-		<div class='spread'>
-			<center>
-				<h3>Hey, {{username}}!</h3> <h3 id="time_of_day">Good Day!</h3>
-				<h5>It's a great day to take care of our Earth!</h5>
-			</center>
+		<div class='row'>
+			<div class='col-6 landing-text-wrapper'>
+				<h2><span id="time_of_day">Good day</span>, {{username}}! </h2>
+				<h5>It's a great day to take care of our Earth! <br>Your sustainability score is <span class="badge badge-info">{{score}}</span></h5>
 
-			<h3 id="sustainability_score">Sustainability Score: {{score}}</h3>
-
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Input your daily impact </button>
-			
-		</div>
-
-    {% include "partials/carousel.html" %}
-
-		<div class="container marketing">
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Input your daily impact </button>
+				{% include "partials/carousel.html" %}
+				
+			</div>
+			<div class='col-6'>
+				<div class="container marketing">
 			<!-- Specific areas of interest -->
 			<div class="row">
 				<div class="col-lg-4">
@@ -366,6 +398,12 @@
 
 			</div>
 		</div>
+			</div>
+		</div>
+
+    
+    <br><br><br><br>
+    
 		
 		{% include "partials/include js.html" %}
 		<script src="/static/scripts/dashboard.js"></script>

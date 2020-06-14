@@ -1,6 +1,15 @@
+body{
+ font-family: 'Montserrat', sans-serif;
+}
+
+#info-page {
+	background-image:url("https://cdn.discordapp.com/attachments/720097811135201291/721517833271378050/info_5.png");
+}
 .info{
-  margin-left: 10%;
-  margin-right: 10%;
+  background: white;
+  padding: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .sources{
