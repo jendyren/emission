@@ -12,4 +12,6 @@ With emission, you can get a tangible idea of how your actions impact the enviro
 • Chart.js  
 • Python  
 • MongoDB  
-• UiPath
+• UiPath  
+• Google Cloud  
+• Google Earth Engine  
