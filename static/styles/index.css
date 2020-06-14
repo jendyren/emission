@@ -274,8 +274,7 @@ body {
 
 #calories{
   /* margin-left: 3%; */
-	font-size: 2em;
-	font-weight: bold;
+	font-size: 1.5em;
 	display: block;
 	width: 80%;
 }
