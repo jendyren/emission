@@ -22,7 +22,7 @@
     <h3 id="sustainability_score">Sustainability Score: {{score}}</h3>
 		<div class='spread'>
 			<div class="down left">
-					<p> Overview </p>
+					<h5> Overview </h5>
 						<div class="area-description-container">
 							<div class="area-description">
 								<img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="100" height="100">
@@ -79,9 +79,10 @@
 				<div id='name-preview'></div>
 
 				<div id='friend-list'>
+					<h3>Friends</h3>
 
 					{% for friend in friends %}
-            <p> {{friend}}</p>
+            <p onclick="befriend({{friend}})">{{friend}}</p>
 					{% endfor %}
 
 				</div>
@@ -96,9 +97,10 @@
   </center>
 
 
-
+    <script src="/static/scripts/index.js"></script>
 		{% include "partials/include js.html" %}
-    
     <script src="/static/scripts/profile.js"></script>
+      	
+
 	</body>
 </html>

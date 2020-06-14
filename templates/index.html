@@ -6,6 +6,7 @@
 		{% include "partials/full navbar.html" %}
 	</head>
 	<body id="dashboard-page">
+		<iframe style="display: none" name="dummyframe"></iframe>
 		<!-- Notifications -->
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
@@ -17,7 +18,7 @@
 			{% endif %}
 		{% endwith %}
 		<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="exampleModal" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
           <div class="modal-header">
@@ -79,12 +80,6 @@
                 <input name="dayTransit-mileDrive" type="range" min="0" max="650" value = "30" class="slider" id="miles_slider">
               </div>
               <label class="value_label" id="miles_val"> 2 </label>
-
-              <h5> Did you carpool? </h5>
-              <div class="slidercontainer">
-                <input name="dayTransit-carpool" type="range" min="0" max="650" value = "30" class="slider" id="carpool_slider">
-              </div>
-              <label class="value_label" id="carpool_val"> 2 </label>
 
               <h5> Did you use public transportation? </h5>
               <div class="slidercontainer">
@@ -243,50 +238,50 @@
               <div id="wrapper">
                 <h5>Do you recycle plastic?</h5>
                 <p>
-                  <input type="radio" name="plastic_yes_no"> Yes</input>
+                  <input type="radio" value="1" name="recycling-plastic_yes_no"> Yes</input>
                 </p>
                 <p>
-                  <input type="radio" name="plastic_yes_no"> No</input>
+                  <input type="radio" value="0" name="recycling-plastic_yes_no"> No</input>
                 </p>
               </div>
               
               <div id="wrapper">
                 <h5>Do you recycle bottles and cans?</h5>
                 <p>
-                  <input type="radio" name="cans_yes_no"> Yes</input>
+                  <input type="radio" value="1" name="recycling-cans_yes_no"> Yes</input>
                 </p>
                 <p>
-                  <input type="radio" name="cans_yes_no"> No</input>
+                  <input type="radio" value="0" name="recycling-cans_yes_no"> No</input>
                 </p>
               </div>
               
               <div id="wrapper">
                 <h5>Do you donate or re-use old clothing, sheets, blankets and towels?</h5>
                 <p>
-                  <input type="radio" name="clothing_yes_no"> Yes</input>
+                  <input type="radio" value="1" name="recycling-clothing_yes_no"> Yes</input>
                 </p>
                 <p>
-                  <input type="radio" name="clothing_yes_no"> No</input>
+                  <input type="radio" value="0" name="recycling-clothing_yes_no"> No</input>
                 </p>
               </div>
 
               <div id="wrapper">
                 <h5>Do you recycle paper?</h5>
                 <p>
-                  <input type="radio" name="paper_yes_no"> Yes</input>
+                  <input type="radio" value="1" name="recycling-paper_yes_no"> Yes</input>
                 </p>
                 <p>
-                  <input type="radio" name="paper_yes_no"> No</input>
+                  <input type="radio" value="0" name="recycling-paper_yes_no"> No</input>
                 </p>
               </div>
 
               <div id="wrapper">
                 <h5>Do you use a reusable water bottle?</h5>
                 <p>
-                  <input type="radio" name="paper_yes_no"> Yes</input>
+                  <input type="radio" value="1" name="recycling-water_yes_no"> Yes</input>
                 </p>
                 <p>
-                  <input type="radio" name="paper_yes_no"> No</input>
+                  <input type="radio" value="0" name="recycling-water_yes_no"> No</input>
                 </p>
               </div>
 
@@ -367,35 +362,33 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="140" height="140">
-					<h4><br>Your Score: </h4> <h4 id="transit_score"> </h4><br>
-					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+					<h4><br>Your Score: </h4> <h4 id="transit_score"> Finish filling out the survey to see!  </h4><br>
+					
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/diet.png" alt="diet" width="140" height="140">
-					<h4><br>Your Score: </h4> <h4 id="diet_score"> </h4><br>
-					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+					<h4><br>Your Score: </h4> <h4 id="diet_score"> Finish filling out the survey to see!</h4><br>
+					
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/energy.png" alt="Energy" width="140" height="140">
-					<h4><br>Your Score: </h4> <h4 id="energy_score"> </h4><br>
-					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+					<h4><br>Your Score: </h4> <h4 id="energy_score">Finish filling out the survey to see! </h4><br>
+					
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/wardrobe.png" alt="wardrobe" width="140" height="140">
-					<h4><br>Your Score: </h4> <h4 id="wardrobe_score"> </h4> <br>
-					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+					<h4><br>Your Score: </h4> <h4 id="wardrobe_score">Finish filling out the survey to see! </h4> <br>
+					
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/recycling.png" alt="Recycling" width="140" height="140">
-					<h4><br>Your Score: </h4> <h4 id="recycling_score"> </h4> <br>
-					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+					<h4><br>Your Score: </h4> <h4 id="recycling_score">Finish filling out the survey to see! </h4> <br>
+					<br><p><a class="btn btn-secondary" href="/profile" role="button">View score details &raquo;</a></p>
 				</div>
 				<div class="col-lg-4">
 					<img class="rounded-circle" src="/static/images/water.png" alt="water" width="140" height="140">
-					<h4><br>Your Score: </h4> <h4 id="water_score"> </h4> <br>
-					<p><a class="btn btn-secondary" href="/profile" role="button">View details &raquo;</a></p>
+					<h4><br>Your Score: </h4> <h4 id="water_score"> Finish filling out the survey to see!</h4> <br>
 				</div>
-
 			</div>
 		</div>
 			</div>

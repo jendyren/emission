@@ -1,5 +1,4 @@
 from flask import Flask, render_template, url_for, request, redirect, flash, Response, make_response, jsonify
-
 import db
 app = Flask('app')
 app.secret_key = 'super secret string'  # Change this!
@@ -36,8 +35,6 @@ def request_loader(request):
 			return
 		user = User()
 		user.id = username
-		
-		#user.is_authenticated = True; # this line is useless LOL
 		return user
 
 ############################ NO CACHE
@@ -70,7 +67,6 @@ def login():
 		# Registration
 		if request.form["password2"]:
 			# Check if the user already exists
-
 			if (pwrd != request.form["password2"]):
 				flash("Passwords do not match!")
 				return render_template('login.html')
@@ -125,13 +121,22 @@ def dashboard():
 	userid = request.cookies.get('userID')
 
 	score = db.get_data(userid, ['score'])["score"]
+	activities = db.get_data(userid, ['activities'])
+
+	"""
+	# formatting the activities data for the line chart
+	# Need to save scores to the database first
+	
+	"""
+
 	if request.method == 'POST' and request.form:
 		activities = {}
-		for i in request.form:
-			val = request.form[i]
-			if val.isdigit(): val = int(val)
-			activities['activities.' + i.replace('-', '.')] = val				
-
+		date = 'd' + request.form['date'].replace('/', '_')
+		for i, val in request.form.items():
+			if i == 'date': continue
+			if val.lstrip('-+').isdigit(): val = int(val)
+			print(i, val)
+			activities['activities.' + i.replace('-', '.') + '.' + date] = val
 		db.updateActivities(userid, activities)
 		flash("Your responses have been saved!")
 	return render_template('index.html', username=username, score=score)

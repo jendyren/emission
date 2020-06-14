@@ -32,3 +32,18 @@ else if ((hour >= 12) && (hour < 18)){
 else {
   document.getElementById("time_of_day").innerHTML = "Good evening"
 }
+
+$("form").submit( function(eventObj) {
+	var d = new Date();
+	var day = d.getDate();
+	var month = d.getMonth() + 1;
+	var year = d.getFullYear(); // it works!
+	var dateStr = year + "/" + month + "/" + day;
+	$("<input />").attr("type", "hidden")
+			.attr("name", "date")
+			.attr("value", dateStr)
+			.appendTo("form");
+	console.log(this);
+	document.getElementsByClassName('modal')[0].click();
+	return true;
+});

@@ -47,15 +47,32 @@
 }
 
 .down {
+  background: rgba(255, 255, 255, 0.699);
 	display: flex;
 	flex-direction: column;
 }
-
 .left {
+  background: rgba(255, 255, 255, 0.699);
   margin-left: 2%;
 	width: 50%;
 }
-
 #friend-box {
 	margin-right: 2em;
 }
+#name-preview {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: none;
+}
+#name-preview p {
+	cursor: pointer;
+	margin-bottom: 0;
+}
+#name-preview p:hover {
+	background: lightgray;
+}
+#friend-list {
+	margin-top: 10em;
+}
+

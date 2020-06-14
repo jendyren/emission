@@ -114,22 +114,10 @@ def befriend(id, friendName):
 	users.update_one({'_id': ObjectId(id)}, {'$push': {"friends": friendName}})
 
 def search_names(name):
-	lowername = name[0].lower() + name[1:]
-	# nope :(
-	# i guess you could also store a lowercase version of the name or something in the db
-	# I think there's a way to do it actually alright
-	# people = users.find({'$or': [
-	# 	{'username': {'$gte': lowername, '$lte': lowername+'z'}},
-	# 	{'username': {'$gte': name.upper(), '$lte': name.upper()+'z'}}
-	# ]
-	# }, {'username': 1}).limit(20);
 	people = users.find({
 		"username": {"$regex": "^" + name.lower(), "$options" :'i'}
 	}
 	, {'username': 1}).limit(20);
-	# people = users.find({'$match': {
-
-	# }, {'username': 1}).limit(20);
 	return [x['username'] for x in people]
 
 
