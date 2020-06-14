@@ -52,6 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 .landing-text-wrapper {
 	padding:20px;
 	padding-left: 100px;
+	padding-top:70px;
 }
 .landing-text-wrapper h1 {
 	margin-top: 15%;

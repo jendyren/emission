@@ -31,7 +31,7 @@ fetch('/get-leader', {
 	
 	let global = data.global;
 	let around = data.around;
-	let friend = data.friend;
+	let friend = data.friends;
 	globalTable.innerHTML = ""; aroundTable.innerHTML = ""; friendTable.innerHTML = "";
 	for (let i = 0; i < global.length; i++){
 		makeSpot(global[i], globalTable);
@@ -39,7 +39,7 @@ fetch('/get-leader', {
 	for (let i = 0; i < around.length; i++){
 		makeSpot(around[i], aroundTable);
 	}
-	for (let i = 0; i < global.length; i++){
+	for (let i = 0; i < friend.length; i++){
 		makeSpot(friend[i], friendTable);
 	}
 });

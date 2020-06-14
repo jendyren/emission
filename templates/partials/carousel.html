@@ -6,9 +6,9 @@
 	</ol>
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<h5>Your score history</h5>
+			<center> <h5>Your Sustainability Score History</h5> </center>
 			<div class="container">
-				<canvas id="line-chart" height="170px"></canvas>
+				<canvas id="line-chart" height="150px"></canvas>
 			</div>
 		</div>
 		<div class="carousel-item">
@@ -20,14 +20,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="carousel-item">
-			<img class="second-slide" src="https://lh3.googleusercontent.com/proxy/y8VRuxHwjzCXZCtbT8JavaMgXIEroIEBdVZKzhiZoObZnBwCdlL2wI1lbA-pnUARJldocH9beEN_nmwb3CeRmPlXjBZDWEeNybPoPQkZPr1vHq7TPyszqYZ_rcRqrELUs8WdDKr5ELy9zvnrLO9xB8j0TuDhc2L63C6429Z5-gKy" alt="Third slide">
+		
+    <div class="carousel-item">
+			
 			<div class="container">
-				<div class="carousel-caption text-center">
-					<h3 id = "heading">Ask Our Chatbot A Question</h3>
-					<p><a class="btn btn-primary" href="/chatbot" role="button">Go To Chatbot</a></p>
+				<div class="caloriecounter">
+						<h2>
+							Calorie Counter
+						</h2>
+						<p>
+							&raquo; Don't sacrifice a healthy diet in favor of sustainability!
+							<br> 
+							&raquo; Use Calorie Counter by typing in the name of your food!
+							<br> 
+							*There may be up to a 5 second wait.
+						</p>
+						<input type="text" placeholder="Type in a food" onchange="getCalories(this.value)">
+						<p id='calories'></p>
+						</div>  
 				</div>
-			</div>
 		</div>
 	</div>
 	<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">

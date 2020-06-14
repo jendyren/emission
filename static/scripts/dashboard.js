@@ -16,7 +16,7 @@ $("form").submit( function(eventObj) {
 	var d = new Date();
 	var day = d.getDate();
 	var month = d.getMonth() + 1;
-	var year = d.getFullYear(); // it works!
+	var year = d.getFullYear();
 	var dateStr = year + "/" + month + "/" + day;
 	$("<input />").attr("type", "hidden")
 			.attr("name", "date")

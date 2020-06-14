@@ -24,8 +24,6 @@ p {
 	border-radius:10px;
 }
 
-
-
 a {
 	font-weight:600 !important;
 	color: #7fcdfa;
@@ -74,6 +72,7 @@ body {
 	border-radius:10px;
 	padding:10px;
 	height:50vh;
+	overflow-y: auto;
 }
 
 .carousel h3 {
@@ -91,7 +90,7 @@ body {
 .carousel-item {
   object-fit: contain;
   height:47vh;
-  background-color: white;
+  background-image: url("https://cdn.discordapp.com/attachments/720097811135201291/721609507167535125/oop.png");
 }
 .carousel-item > img {
   object-fit: contain;
@@ -200,6 +199,23 @@ body {
 	align-items: center;
 }
 
+
+/* Random badges */
+.badge-a {
+	background: #6BD6A0;
+}
+.badge-b {
+	background: #A9FC72;
+}
+.badge-c {
+	background: #F9DC67;
+}
+.badge-d {
+	background: #F1A16B;
+}
+.badge-f {
+	background: #ED6F63;
+}
 .slidecontainer {
   width: 100%; /* Width of the outside container */
 }
@@ -249,3 +265,19 @@ body {
 .checkbox_label {
   font-family: 'Montserrat', sans-serif;
 }
+
+.caloriecounter{
+  background-image: url("https://cdn.discordapp.com/attachments/720097811135201291/721609507167535125/oop.png");
+  margin-top: 5%;
+  margin-left: 8%;
+}
+
+#calories{
+  /* margin-left: 3%; */
+	font-size: 2em;
+	font-weight: bold;
+	display: block;
+	width: 80%;
+}
+
+

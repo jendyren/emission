@@ -82,14 +82,14 @@ input:checked + .slider:before {
   text-align: center;
 }
 
-table {
+/*table {
 	border: 2px solid black;
 }
 table tr{
 	border-bottom: 2px solid black;
-}
+}*/
 table tr td:first-child{
-	border-right: 2px solid black;
+	/*border-right: 2px solid black;*/
 	width: 2em;
 	padding: 0.5em
 }

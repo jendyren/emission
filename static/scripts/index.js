@@ -120,28 +120,25 @@ fetch('/get-info', {
 		},
 		body: JSON.stringify(scores)
 	});
-	if ($("#line-chart")) {
-		let score_list = data_backup.scores.sustainability_score;
-		new Chart(document.getElementById("line-chart"), {
-			type: 'line',
-			labels: Object.keys(score_list),
-			data: {
-			datasets: [{
-				data: Object.values(score_list),
-				label: "Dates",
-				borderColor: "#3e95cd",
-				fill: false
-				}
-			]
-			},
-			options: {
-				title: {
-					display: true,
-					text: 'Your Sustainability Score Over Time'
-				}
+	let score_list = data_backup.scores.sustainability_score;
+	console.log(score_list)
+	new Chart($("#dashboard-page #line-chart"), {
+		type: 'line',
+		labels: Object.keys(score_list),
+		data: {
+		datasets: [{
+			data: Object.values(score_list),
+			label: "Dates",
+			borderColor: "#3e95cd",
+			fill: false
+			}]
+		},
+		options: {
+			title: {
+				display: false
 			}
-		}); //End chart
-	}
+		}
+	}); //End chart
 
 	$("#sustainability-score").text(score_names.sustainability_score);
 });
@@ -260,49 +257,50 @@ function calculate_recycling_co2(recycling, date){
 function get_score(total, percentage){
 
   if ((total == undefined) || (Number.isNaN(total))){
-    return "Finish filling out the survey to see!"
+    return "<small>Finish filling out the survey to see!</small>"
   }
   else if (total/percentage <= (2 * .735)){
-    return "A";
+    return "<span class='badge badge-a'>A</span>";
   }
   else if ((total/percentage > (2 * .735)) && (total/percentage <= (6 * .735))){
-    return "B";
+    return "<span class='badge badge-b'>B</span>";
   }
   else if ((total/percentage > (6 * .735)) && (total/percentage <= (10 * .735))){
-    return "C";
+    return "<span class='badge badge-c'>C</span>";
   }
   else if ((total/percentage > (10 * .735)) && (total/percentage <= (14 * .735))){
-    return "D";
+    return "<span class='badge badge-d'>D</span>";
   }
   else if (total/percentage > (14 * .735)){
-    return "F";
+    return "<span class='badge badge-f'>F</span>";
   }
 }
 
 function get_recycling_score(total, percentage){
   if ((total == undefined) || (Number.isNaN(total))){
-    return "Finish filling out the survey to see!"
+    return "<small>Finish filling out the survey to see!</small>"
   }
   
   else if (total/percentage > 4 * .735){
-    return "A";
+    return "<span class='badge badge-a'>A</span>";
   }
   else if ((total/percentage <= 4 * .735) &&  (total/percentage > 2 * .735)){
-    return "B";
+    return "<span class='badge badge-b'>B</span>";
   }
   else if ((total/percentage <= 2 * .735) &&  (total/percentage > .2 * .735)){
-    return "C";
+    return "<span class='badge badge-c'>C</span>";
   }
   else if ((total/percentage <= .2 * .735) &&  (total/percentage > 0)){
-    return "D";
+    return "<span class='badge badge-d'>D</span>";
   }
   else{
-    return "F";
+    return "<span class='badge badge-f'>F</span>";
   }
 }
 
 
 async function getCalories(food){
+	if (food == '') return;
 	let response = await fetch('/foodCalorie', {
 		method: 'POST',
 		headers: {
@@ -312,5 +310,7 @@ async function getCalories(food){
 	});
 	let json = await response.json();
 	console.log('json', json);
-	document.getElementById('calories').innerHTML = json.answer
+	let text = document.getElementById('calories');
+	text.innerHTML = food + " is " + json.answer + " calories per serving";
+	console.log(text);
 }

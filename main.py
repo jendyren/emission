@@ -1,11 +1,14 @@
 from flask import Flask, render_template, url_for, request, redirect, flash, Response, make_response, jsonify
 import db
+import json
+
 app = Flask('app')
 app.secret_key = 'super secret string'  # Change this!
 
 uiPathAnswers = {}
 doUI = True
 uiAsk = "hamburger"
+uiAsks = []
 
 import logging
 log = logging.getLogger('werkzeug')
@@ -175,9 +178,14 @@ def profile():
 	username = flask_login.current_user.id
 
 	userid = request.cookies.get('userID')
+	scores = db.get_data(userid, ['scores'])['scores']
+
+	score = db.get_data(userid, ['score'])['score']
 	friends = db.get_data(userid, ['friends'])
 	friends = [] if 'friends' not in friends else friends["friends"]
-	return render_template('profile.html', username=username, friends=friends)
+
+	return render_template('profile.html', username=username,
+		friends=friends, score=score)
 
 @app.route('/information')
 @flask_login.login_required
@@ -211,31 +219,35 @@ def getLeader():
 @app.route('/foodCalorie', methods=['POST'])
 @flask_login.login_required
 def foodCalorie():
-	global uiAsk, doUI, uiPathAnswers
+	global uiPathAnswers, uiAsks
 	data = request.get_json()['food']
-	print('getting', data)
-	uiAsk = data
-	doUI = True
-	while data not in uiPathAnswers:
+	if data in uiPathAnswers.keys():
+		return jsonify({'answer': uiPathAnswers[data]})
+	if data not in uiAsks:
+		uiAsks.append(data)
+	while data not in uiPathAnswers.keys():
 		pass
 	return jsonify({'answer': uiPathAnswers[data]})
 
 @app.route('/ui-data', methods=['POST'])
 def uiData():
-	global uiPathAnswers
+	global uiPathAnswers, uiAsks
 	data = request.get_json()
 	print("DATA", data)
 	food = data['food']
 	calories = data['calories']
+	if food in uiAsks:
+		del uiAsks[uiAsks.index(food)]
 	uiPathAnswers[food] = calories
 	return jsonify({})
 
 @app.route('/ui-go', methods=['POST'])
 def goUI():
-	global doUI
-	if doUI:
-		doUI = False
-		return jsonify({"go": True, "food": uiAsk})
+	global doUI, uiAsks
+	if len(uiAsks) > 0:
+		ask = uiAsks[0]
+		del uiAsks[0]
+		return jsonify({"go": True, "food": ask})
 	return jsonify({"go": False})
 
 @app.route('/befriend', methods=['POST'])
@@ -244,7 +256,7 @@ def befriend():
 	userid = request.cookies.get('userID')
 	othername = request.get_json()['name']
 	db.befriend(userid, othername)
-	return ""
+	return jsonify({'success': True})
 
 @app.route('/search', methods=['POST'])
 def searchNames():

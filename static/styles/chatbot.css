@@ -4,4 +4,10 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;  
   background-size: cover;
+
+  
+}
+
+df-messenger{
+  --df-messenger-input-box-color: #6EB097;
 }

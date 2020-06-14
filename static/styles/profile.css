@@ -57,7 +57,7 @@
 	width: 50%;
 }
 #friend-box {
-	margin-right: 2em;
+	margin-right: 4em;
 }
 #name-preview {
 	border-left: 1px solid black;
@@ -76,3 +76,6 @@
 	margin-top: 10em;
 }
 
+.overview{
+  margin-left: 1em;
+}

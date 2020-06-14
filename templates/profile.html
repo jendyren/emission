@@ -19,57 +19,73 @@
 	
 	<center>
 		<h2> Profile </h2> <br>
-    <h3 id="sustainability_score">Sustainability Score: {{score}}</h3>
+  
+  
+  
+  <div class="badges">
+    <h3> Badges </h3>
+    <img id="cold_showers_badge" src="/static/images/cold_showers.png" width="100">
+    <img id="vegan_badge" src="/static/images/vegan.png" width="100">
+    <img id="walk_badge" src="/static/images/walk_or_bike.png" width="100">
+    <img id="no_fly_badge" src="/static/images/no_flying.png" width="100">
+    <img id="eat_out_badge" src="/static/images/no_eating_out.png" width="100">
+    <img id="second_hand_badge" src="/static/images/second_hand.png" width="100">
+    <br><br>
+    
+  </div>
+
+  <h3 id="sustainability_score">Sustainability Score: {{score}}</h3><br>
+  </center>
+  
 		<div class='spread'>
 			<div class="down left">
-					<h5> Overview </h5>
+					<h5 class="overview"> Overview </h5>
 						<div class="area-description-container">
 							<div class="area-description">
 								<img class="rounded-circle" src="/static/images/transit.png" alt="transportation" width="100" height="100">
 							</div>
 							<div class="area-description">
-								<p> Your transit causes __ tons of CO2 emissions per year.<p> 
-								<p> Your carbon emissions caused by transit are higher than __ % of people.<p> <br>
+								<p> Transportation is one of the largest sources of global carbon emissions. Flights are responsible for approximately 12% of global transport emissions and 2% of global carbon emissions while road transport (cars, buses, trucks, etc.) are responsible for 74% of global transport emissions and comprise of 20% of global carbon emissions. By carpooling, taking public transport, biking/walking to work, and reducing unnecessary air travel can significantly reduce your contribution to global warming. </p> <br>
 							</div> 
 
 							<div class="area-description">
 								<img class="rounded-circle" src="/static/images/diet.png" alt="diet" width="100" height="100">
 							</div>
 							<div class="area-description">
-								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+								<p> The type of food that you ingest also contributes toward your overall carbon footprint. Those who eat meat use over 500 gallons of water more per day than those who eat a plant-based diet. This ultimately contributes to the rise of carbon emission because of the necessary steps and procedures to deliver certain ingredients to your table. <p> <br>
 							</div> 
 
 							<div class="area-description">
 								<img class="rounded-circle" src="/static/images/energy.png" alt="Energy" width="100" height="100">
 							</div>
 							<div class="area-description">
-								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+								<p> While the electricity in your home can greatly affect your carbon footprint, your phone and internet usage also increase your contribution to greenhouse gas emissions. Streaming music, videos, sending emails and texts, or calling a friend quickly adds up. Energy is needed to power the internet servers that run 24/7. Reduce your internet and call time to reduce your carbon footprint. <p> <br>
 							</div> 
 
 							<div class="area-description">
 									<img class="rounded-circle" src="/static/images/wardrobe.png" alt="wardrobe" width="100" height="100">
 							</div>
 							<div class="area-description">
-								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+								<p> The fashion industry contributes 10% of global carbon emissions every year. Creating textiles from raw materials consumes large amounts of water and energy. By buying second hand or sustainably sourced clothing, you can help reduce your closet's carbon footprint. <p> <br>
 							</div>
 
 							<div class="area-description">
 									<img class="rounded-circle" src="/static/images/recycling.png" alt="Recycling" width="100" height="100">
 							</div>
 							<div class="area-description">
-								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+								<p> Research has shown that recycling various items such as plastics water bottles, cans, and clothing are able to effectively reduce one's carbon footprint. By using reuseable watterbottles and straws, the amount of carbon emissions can be greatly lessened. <p> <br>
 							</div> 
 							
 							<div class="area-description">
 								<img class="rounded-circle" src="/static/images/water.png" alt="water" width="100" height="100">
 							</div>
 							<div class="area-description">
-								<p> descripty things descripty things descripty things descripty things descripty things descripty things descripty things<p> <br>
+								<p> Our carbon footprint not only includes our transportation, diet, energy usage, and wardrobe, it also includes our water footprint. Water needs to be pumped and treated to make it usable by humans. By using less water, less energy and chemicals will be used, helping reduce our carbon emissions. <p> <br>
 							</div> 
 				
 				</div>	
 			</div>
-
+      
       <div id = 'gradesystem'>
         <img src = "/static/images/gradescale.png" alt = "Grade Scale" width = "250">
       </div>
@@ -82,23 +98,19 @@
 					<h3>Friends</h3>
 
 					{% for friend in friends %}
-            <p onclick="befriend({{friend}})">{{friend}}</p>
+            <p>{{friend}}</p>
 					{% endfor %}
 
 				</div>
 
 			</div>
+      
 
 
 		</div>
 
-
-    
-  </center>
-
-
-    <script src="/static/scripts/index.js"></script>
 		{% include "partials/include js.html" %}
+
     <script src="/static/scripts/profile.js"></script>
       	
 
